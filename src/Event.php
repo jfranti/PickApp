@@ -106,6 +106,11 @@
             return $returned_events;
         }
 
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM events *;");
+        }
+
     }
 
 ?>
