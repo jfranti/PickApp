@@ -15,6 +15,7 @@
             $this->description = $description;
             $this->id = $id;
         }
+
         function setName($new_name)
         {
             $this->name = $new_name;
