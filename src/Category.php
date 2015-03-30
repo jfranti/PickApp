@@ -18,22 +18,6 @@
             $this->description = $description;
             $this->id = $id;
         }
-
-        function getName()
-        {
-            return $this->name;
-        }
-
-        function getDescription()
-        {
-            return $this->description;
-        }
-
-        function getId()
-        {
-            return $this->id;
-        }
-
         function setName($new_name)
         {
             $this->name = $new_name;
@@ -49,6 +33,20 @@
             $this->id = $new_id;
         }
 
+        function getName()
+        {
+            return $this->name;
+        }
+
+        function getDescription()
+        {
+            return $this->description;
+        }
+
+        function getId()
+        {
+            return $this->id;
+        }
         function save()
         {
             $statement = $GLOBALS['DB']->query("INSERT INTO categories (name, description) VALUES ('{$this->getName()}', '{$this->getDescription()}') RETURNING id;");
@@ -69,12 +67,10 @@
             }
             return $returned_categories;
         }
-
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM categories *;");
         }
-
     }
 
 ?>
