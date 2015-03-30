@@ -5,7 +5,7 @@
         private $id;
         private $name;
         private $location;
-        private $time;
+        private $event_time;
         private $reqs;
         private $description;
         private $skill_level;
@@ -41,14 +41,14 @@
             return $this->location;
         }
 
-        function setTime($new_time)
+        function setEventTime($new_event_time)
         {
-            $this->time = $new_time;
+            $this->event_time = $new_event_time;
         }
 
-        function getTime()
+        function getEventTime()
         {
-            return $this->time;
+            return $event_time->event_time;
         }
 
         function setReqs($new_reqs)
@@ -81,9 +81,30 @@
             return $this->description;
         }
 
+        function save()
+        {
+            $statement = $GLOBALS['DB']->query("INSERT INTO events (id, name, location, event_time, reqs, description, skill_level) VALUES ('{$this->getName()}', '{$this->getLocation()}', '{$this->getEventTime()}', '{$this->getReqs()}', '{$this->getDescription()}', '{$this->getSkillLevel()}') RETURNING id;");
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $this->setId($result['id']);
+        }
 
-
-
+        static function getAll()
+        {
+            $all_events = $GLOBALS['DB']->query("SELECT * FROM events");
+            $returned_events = array();
+            foreach($all_events as $event) {
+                $name = $event['name'];
+                $location = $event['location'];
+                $event_time = $event['event_time'];
+                $reqs = $event['reqs'];
+                $description = $event['description'];
+                $skill_level = $event['skill_level'];
+                $id = $event['id'];
+                $new_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level, $id);
+                array_push($returned_events, $new_event);
+            }
+            return $returned_events;
+        }
 
     }
 
