@@ -1,5 +1,11 @@
 <?php
 
+    /**
+    * @backupGlobals disabled
+    * @backupStaticAttributes disabled
+    */
+    $DB = new PDO('pgsql:host=localhost;dbname=pickapp_test');
+
     class Category
     {
         private $name;
@@ -12,7 +18,6 @@
             $this->description = $description;
             $this->id = $id;
         }
-
         function setName($new_name)
         {
             $this->name = $new_name;
@@ -42,10 +47,9 @@
         {
             return $this->id;
         }
-
         function save()
         {
-            $statement = $GLOBALS['DB']->query("INSERT INTO categories (name, description) VALUES ('$this->getName()', '$this->getDescription()');");
+            $statement = $GLOBALS['DB']->query("INSERT INTO categories (name, description) VALUES ('{$this->getName()}', '{$this->getDescription()}') RETURNING id;");
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             $this->setId($result['id']);
         }
@@ -63,7 +67,10 @@
             }
             return $returned_categories;
         }
-
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM categories *;");
+        }
     }
 
 ?>
