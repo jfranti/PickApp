@@ -88,7 +88,7 @@
 
         function getSkillLevel()
         {
-            return $this->description;
+            return $this->skill_level;
         }
 
         function save()

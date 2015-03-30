@@ -1,4 +1,3 @@
-
 ###Developers
 Geoff Winner, Reid Baldwin, Brett Moore, John Franti
 
