@@ -119,10 +119,10 @@ CREATE TABLE events (
     id integer NOT NULL,
     name character varying,
     location character varying,
-    "time" timestamp without time zone,
     reqs character varying,
     description text,
-    skill_level character varying
+    skill_level character varying,
+    event_time timestamp without time zone
 );
 
 
@@ -286,7 +286,7 @@ SELECT pg_catalog.setval('categories_id_seq', 1, false);
 -- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY events (id, name, location, "time", reqs, description, skill_level) FROM stdin;
+COPY events (id, name, location, reqs, description, skill_level, event_time) FROM stdin;
 \.
 
 
