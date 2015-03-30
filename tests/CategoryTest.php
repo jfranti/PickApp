@@ -3,18 +3,14 @@
     * @backupGlobals disabled
     * @backupStaticAttributes disabled
     */
-
     $DB = new PDO('pgsql:host=localhost;dbname=pickapp_test');
-
     require_once "src/Category.php";
-
     class CategoryTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
             Category::deleteAll();
         }
-
         function test_getName()
         {
             //Arrange
@@ -46,9 +42,7 @@
             $description = 'Nothardcore';
             $id = 1;
             $test_category = new Category($name, $description, $id);
-
             $result = $test_category->getDescription();
-
             $this->assertEquals($description, $result);
         }
         function test_setDescription()
@@ -57,10 +51,8 @@
             $description = 'NotHardcore';
             $id = 1;
             $test_category = new Category($name, $description, $id);
-
             $test_category->setDescription('Hardcore');
             $result = $test_category->getDescription();
-
             $this->assertEquals('Hardcore', $result);
         }
         function test_getId()
@@ -101,6 +93,5 @@
             //Assert
             $this->assertEquals($test_category, $result[0]);
         }
-
     }
 ?>

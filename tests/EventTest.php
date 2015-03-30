@@ -71,6 +71,64 @@
 
         }
 
+        function test_getEventTime()
+        {
+            //Arrange
+            $name = "Baseball Game";
+            $location = "Overlook Park";
+            $event_time = "2015/12/12 14:00:00";
+            $reqs = "Bring a glove.";
+            $description = "n/a";
+            $skill_level = "Beginner";
+            $id = 1;
+            $test_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level, $id);
+            //Act
+            $result = $test_event->getEventTime();
+            var_dump($result);
+            //Assert
+            $this->assertEquals($event_time, $result);
+
+        }
+
+        function test_getDescription()
+        {
+            //Arrange
+            $name = "Baseball Game";
+            $location = "Overlook Park";
+            $event_time = "2015/12/12 14:00:00";
+            $reqs = "Bring a glove.";
+            $description = "n/a";
+            $skill_level = "Beginner";
+            $id = 1;
+            $test_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level, $id);
+            //Act
+            $result = $test_event->getDescription();
+            var_dump($result);
+            //Assert
+            $this->assertEquals($description, $result);
+
+        }
+
+        function test_getSkillLevel()
+        {
+            //Arrange
+            $name = "Baseball Game";
+            $location = "Overlook Park";
+            $event_time = "2015/12/12 14:00:00";
+            $reqs = "Bring a glove.";
+            $description = "n/a";
+            $skill_level = "Beginner";
+            $id = 1;
+            $test_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level, $id);
+            //Act
+            $result = $test_event->getSkillLevel();
+            var_dump($result);
+            //Assert
+            $this->assertEquals($skill_level, $result);
+
+        }
+
+
 
     }
 

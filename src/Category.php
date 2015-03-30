@@ -1,17 +1,14 @@
 <?php
-
     /**
     * @backupGlobals disabled
     * @backupStaticAttributes disabled
     */
     $DB = new PDO('pgsql:host=localhost;dbname=pickapp_test');
-
     class Category
     {
         private $name;
         private $description;
         private $id;
-
         function __construct($name, $description, $id = null)
         {
             $this->name = $name;
@@ -22,27 +19,22 @@
         {
             $this->name = $new_name;
         }
-
         function setDescription($new_description)
         {
             $this->description = $new_description;
         }
-
         function setId($new_id)
         {
             $this->id = $new_id;
         }
-
         function getName()
         {
             return $this->name;
         }
-
         function getDescription()
         {
             return $this->description;
         }
-
         function getId()
         {
             return $this->id;
@@ -53,7 +45,6 @@
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             $this->setId($result['id']);
         }
-
         static function getAll()
         {
             $all_categories = $GLOBALS['DB']->query("SELECT * FROM categories");
@@ -72,5 +63,4 @@
             $GLOBALS['DB']->exec("DELETE FROM categories *;");
         }
     }
-
 ?>
