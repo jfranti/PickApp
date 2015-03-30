@@ -13,7 +13,7 @@
         function __construct($name, $location, $time, $reqs, $description, $skill_level, $id = null)
         {
             $this->name = $name;
-            $this->$location = $location;
+            $this->location = $location;
             $this->time = $time;
             $this->reqs = $reqs;
             $this->description = $description;
@@ -29,6 +29,16 @@
         function getId()
         {
             return $this->id;
+        }
+
+        function setName($new_name)
+        {
+            $this->name = $new_name;
+        }
+
+        function getName()
+        {
+            return $this->name;
         }
 
         function setLocation($new_location)
@@ -48,7 +58,7 @@
 
         function getEventTime()
         {
-            return $event_time->event_time;
+            return $this->event_time;
         }
 
         function setReqs($new_reqs)
