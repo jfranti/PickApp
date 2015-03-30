@@ -50,6 +50,20 @@
             $this->setId($result['id']);
         }
 
+        static function getAll()
+        {
+            $all_categories = $GLOBALS['DB']->query("SELECT * FROM categories");
+            $returned_categories = array();
+            foreach($all_categories as $category){
+                $name = $category['name'];
+                $description = $category['description'];
+                $id = $category['id'];
+                $new_category = new Category($name, $description, $id);
+                array_push($returned_categories, $new_category);
+            }
+            return $returned_categories;
+        }
+
     }
 
 ?>
