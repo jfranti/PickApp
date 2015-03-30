@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ###Developers
 Geoff Winner, Reid Baldwin, Brett Moore, John Franti
 
@@ -25,7 +25,7 @@ Type in "CREATE TABLE events_users (id serial PRIMARY KEY, email citext, passwor
 7. JOIN THE FUN!
 
 
-###Copyright (c) 2015 Geoff Winner
+###Copyright (c) 2015 John Franti, Reid Baldwin, Brett Moore, Geoff Winner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
