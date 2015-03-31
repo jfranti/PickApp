@@ -97,18 +97,22 @@
         }
         function getEvents()
         {
-          $query = $GLOBALS['DB']->query("SELECT events.* FROM categories  JOIN categories_events ON (categories.id = categories_events.category_id) JOIN events ON (events_categories.event_id = events.id) WHERE categories.id = {$this->getId()};");
-          $returned_categories = $query->fetchAll(PDO::FETCH_ASSOC);
+          $query = $GLOBALS['DB']->query("SELECT events.* FROM categories  JOIN categories_events ON (categories.id = categories_events.category_id) JOIN events ON (categories_events.event_id = events.id) WHERE categories.id = {$this->getId()};");
+          $returned_events = $query->fetchAll(PDO::FETCH_ASSOC);
 
-          $categories = array();
-          foreach($returned_categories as $category) {
-            $name = $category['name'];
-            $description = $category['description'];
-            $id = $category['id'];
-            $new_category = Category($name, $description, $id);
-            array_push($categories, $new_category);
+          $events = array();
+          foreach($returned_events as $event) {
+            $id = $event['id'];
+            $name = $event['name'];
+            $location = $event['location'];
+            $event_time = $event['event_time'];
+            $reqs = $event['reqs'];
+            $description = $event['description'];
+            $skill_level = $event['skill_level'];
+            $new_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level, $id);
+            array_push($events, $new_event);
           }
-          return $categories;
+          return $events;
         }
 
     }
