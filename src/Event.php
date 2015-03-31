@@ -193,6 +193,13 @@
             return $users;
         }
 
+        function addPlayer($player)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO events_players (event_id, player_id) VALUES ({$this->getId()}, {$player->getId()};");
+        }
+
+
+        
 
     }
 
