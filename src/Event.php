@@ -93,7 +93,7 @@
 
         function save()
         {
-            $statement = $GLOBALS['DB']->query("INSERT INTO events (id, name, location, event_time, reqs, description, skill_level) VALUES ('{$this->getName()}', '{$this->getLocation()}', '{$this->getEventTime()}', '{$this->getReqs()}', '{$this->getDescription()}', '{$this->getSkillLevel()}') RETURNING id;");
+            $statement = $GLOBALS['DB']->query("INSERT INTO events (name, location, event_time, reqs, description, skill_level) VALUES ('{$this->getName()}', '{$this->getLocation()}', '{$this->getEventTime()}', '{$this->getReqs()}', '{$this->getDescription()}', '{$this->getSkillLevel()}') RETURNING id;");
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             $this->setId($result['id']);
         }
