@@ -24,7 +24,16 @@
         return $app['twig']->render('index.html.twig', array('events' => Event::getALl()));
     });
 
-    //EVENT PAGE
+    //USER PAGE
+
+    $app->get("/users/{id}", function($id) use ($app) {
+        $current_user = User::find($id);
+        return $app['twig']->render('index.html.twig', array('user' => $current_user));
+
+    $app->get("/users/{id}/edit", function($id) use ($app) {
+        $current_user = User::find($id);
+        return $app['twig']->render('index.html.twig', array('user' => $current_user));
+    })
 
 
 
