@@ -193,7 +193,6 @@
             return $users;
         }
 
-
         function addPlayer($player)
         {
             $GLOBALS['DB']->exec("INSERT INTO events_players (event_id, player_id) VALUES ({$this->getId()}, {$player->getId()});");
@@ -201,10 +200,7 @@
 
         function getPlayers()
         {
-            $statement = $GLOBALS['DB']->query("SELECT players.* FROM events
-                                                JOIN events_players ON (events.id = events_players.event_id)
-                                                JOIN players ON (events_players.player_id = players.id)
-                                            WHERE events.id = {$this->getId()};");
+            $statement = $GLOBALS['DB']->query("SELECT players.* FROM events JOIN events_players ON (events.id = events_players.event_id) JOIN players ON (events_players.player_id = players.id) WHERE events.id = {$this->getId()};");
             $player_ids = $statement->fetchAll(PDO::FETCH_ASSOC);
             $players = array();
             foreach ($player_ids as $player) {
@@ -215,9 +211,5 @@
             }
             return $players;
         }
-
-
-
     }
-
 ?>
