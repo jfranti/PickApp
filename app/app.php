@@ -69,17 +69,17 @@
 
     $app->get("/events/{id}", function($id) use ($app) {
         $current_event = Event::find($id);
-        return $app['twig']->render('event.twig' array('event' => $current_event, 'players' => $event->getPlayers()));
+        return $app['twig']->render('event.twig', array('event' => $current_event, 'players' => $event->getPlayers()));
     });
 
     $app->get("/events/{id}/host", function($id) use ($app) {
         $current_event = Event::find($id);
-        return $app['twig']->render('event_host.twig' array('event' => $current_event, 'players' => $event->getPlayers()));
+        return $app['twig']->render('event_host.twig', array('event' => $current_event, 'players' => $event->getPlayers()));
     });
 
     $app->get("/events/{id}/edit", function($id) use ($app) {
         $current_event = Event::find($id);
-        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+        return $app['twig']->render('event_edit.twig', array('event' => $current_event));
     });
 
     $app->delete("/events/{id}/delete", function($id) use ($app) {
@@ -92,47 +92,47 @@
         $current_event = Event::find($id);
         $new_name = $_POST['new_name'];
         $current_event->updateName($new_name);
-        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+        return $app['twig']->render('event_edit.twig', array('event' => $current_event));
     });
 
     $app->patch("/events/{id}/update_location", function($id) use ($app) {
         $current_event = Event::find($id);
         $new_location = $_POST['new_location'];
         $current_event->updateLocation($new_location);
-        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+        return $app['twig']->render('event_edit.twig', array('event' => $current_event));
     });
 
     $app->patch("/events/{id}/update_event_time", function($id) use ($app) {
         $current_event = Event::find($id);
         $new_event_time = $_POST['new_event_time'];
         $current_event->updateEventTime($new_event_time);
-        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+        return $app['twig']->render('event_edit.twig', array('event' => $current_event));
     });
 
     $app->patch("/events/{id}/update_reqs", function($id) use ($app) {
         $current_event = Event::find($id);
         $new_reqs = $_POST['new_reqs'];
         $current_event->updateReqs($new_reqs);
-        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+        return $app['twig']->render('event_edit.twig', array('event' => $current_event));
     });
 
     $app->patch("/events/{id}/update_description", function($id) use ($app) {
         $current_event = Event::find($id);
         $new_description = $_POST['new_description'];
         $current_event->updateDescription($new_description);
-        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+        return $app['twig']->render('event_edit.twig', array('event' => $current_event));
     });
 
     $app->patch("/events/{id}/update_skill_level", function($id) use ($app) {
         $current_event = Event::find($id);
         $new_skill_level = $_POST['new_skill_level'];
         $current_event->updateSkillLevel($new_skill_level);
-        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+        return $app['twig']->render('event_edit.twig', array('event' => $current_event));
     });
 
     $app->get("/events/{id}/rsvp", function($id) use ($app) {
         $current_event = Event::find($id);
-        return $app['twig']->render('event_rsvp.twig' array('event' => $current_event));
+        return $app['twig']->render('event_rsvp.twig', array('event' => $current_event));
     });
 
     $app->post("/add_player", function() use ($app) {
@@ -140,8 +140,40 @@
         $new_player = new Player($_POST['new_name']);
         $new_player->save();
         $current_event->addPlayer($new_player);
-        return $app['twig']->render('event.twig' array('event' => $current_event, 'players' => $event->getPlayers()));
+        return $app['twig']->render('event.twig', array('event' => $current_event, 'players' => $event->getPlayers()));
     });
+
+    //CATEGORY PAGES
+
+    $app->get("/categories/{id}", function($id) use ($app) {
+        $current_category = Category::find($id);
+        return $app['twig']->render('user.twig', array('user' => $current_category));
+
+    $app->get("/categories/{id}/edit", function($id) use ($app) {
+        $current_category = Category::find($id);
+        return $app['twig']->render('user_edit.twig', array('user' => $current_category));
+    });
+
+    $app->patch("/categories/{id}/update_name", function ($id) use ($app) {
+        $current_category = Category::find($id);
+        $new_password = $_POST['new_name'];
+        $current_category->updateName($new_name);
+        return $app['twig']->render('user.twig', array('user' => $current_category));
+    });
+
+    $app->patch("/categories/{id}/update_description", function ($id) use ($app) {
+        $current_category = Category::find($id);
+        $new_password = $_POST['new_description'];
+        $current_category->updateDescription($new_description);
+        return $app['twig']->render('user.twig', array('user' => $current_category));
+    });
+
+    $app->delete("/categories/{id}/delete", function ($id) use ($app) {
+        $current_category = Category::find($id);
+        $current_category->delete();
+        return $app['twig']->render('login.twig', array('events' => Event::getALl()));
+    });
+
 
     return $app;
 
