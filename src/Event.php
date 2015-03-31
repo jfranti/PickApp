@@ -163,10 +163,10 @@
             $found_events = null;
             foreach($all_events as $event) {
                 if ($event->getId() == $search_id) {
-                    $found_brands = $brand;
+                    $found_events = $brand;
                 }
             }
-            return $found_brands;
+            return $found_events;
         }
 
         function delete()
@@ -211,5 +211,18 @@
             }
             return $players;
         }
+
+        // static function findCurrentGames()
+        // {
+        //     $found_event = array();
+        //     $time = 60 * 60;
+        //     $all_events = Event::getAll();
+        //     foreach ($all_events as $event) {
+        //         if ((($event->getEventTime()) - time()) < $time) {
+        //             array_push($found_event, $event);
+        //         }
+        //     }
+        //     return $found_event;
+        // }
     }
 ?>
