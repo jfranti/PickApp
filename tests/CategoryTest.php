@@ -150,7 +150,5 @@
 
             $this->assertEquals($test_event, $result[0]);
         }
-
-
     }
 ?>
