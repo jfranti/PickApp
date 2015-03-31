@@ -50,6 +50,19 @@
             $this->setId($result['id']);
         }
 
+        function update($new_email)
+        {
+            $GLOBALS['DB']->exec("UPDATE users SET email = '{$new_email}' WHERE id = {$this->getId()};");
+            $this->setEmail($new_email);
+        }
+
+        function updatePassword($new_password)
+        {
+            $GLOBALS['DB']->exec("UPDATE users SET password = '{$new_epassword}' WHERE id = {$this->getId()};");
+            $this->setPassword($new_password);
+        }
+        }
+
          static function getAll()
         {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users");
@@ -63,6 +76,11 @@
                 array_push($users, $new_user);
             }
             return $users;
+        }
+
+        function addEvent($event)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO users_events (user_id, event_id) VALUES ({$this->getId()}, {$event->getId()});");
         }
 
         static function deleteAll()
