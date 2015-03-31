@@ -12,7 +12,7 @@
     use Symfony\Component\HttpFoundation\Request;
         Request::enableHttpMethodParameterOverride();
 
-    $DB = new PDO('pgsql:host=localhost;dbname=shoes');
+    $DB = new PDO('pgsql:host=localhost;dbname=pickapp');
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../views'
