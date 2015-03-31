@@ -93,5 +93,39 @@
             //Assert
             $this->assertEquals($test_category, $result[0]);
         }
+        function test_find()
+        {
+            $name = 'Hardcore';
+            $description = 'nothardcore';
+            $id = 1;
+            $test_category = new Category($name, $description, $id);
+            $test_category->save();
+
+            $name2 = 'Hardcore';
+            $description2 = 'superhardcore';
+            $id = 1;
+            $test_category = new Category($name, $description, $id);
+            $test_category->save();
+
+            $result = Category::find($test_category->getId());
+
+            $this->assertEquals($test_category, $result);
+        }
+        function test_update()
+        {
+            $name ='Hardcore';
+            $description = 'Nothardcore';
+            $id = 1;
+            $test_category = new Category($name, $description, $id);
+            $test_category->save();
+            $new_name = 'Superhardcore';
+            $new_description = 'funstuff';
+
+            $test_category->update($new_name, $new_description);
+
+            $this->assertEquals(['Superhardcore', 'funstuff'], [$test_category->getName(), $test_category->getDescription()]);
+        }
+
+
     }
 ?>
