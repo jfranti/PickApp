@@ -101,7 +101,7 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM users *;");
-            $GLOBALS['DB']->exec("DELETE FROM events_users WHERE user_id = {$this->getId()};");
+
         }
 
         static function find($search_id)
@@ -119,6 +119,7 @@
         function deleteUser()
         {
             $GLOBALS['DB']->exec("DELETE FROM users WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM events_users WHERE user_id = {$this->getId()};");
         }
     }
 
