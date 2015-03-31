@@ -89,7 +89,7 @@
             $users = array();
             foreach($user_ids as $user) {
                 $email = $user['email'];
-                $password = $user['password']
+                $password = $user['password'];
                 $id = $user['id'];
                 $new_user = new User($email, $password, $id);
                 array_push($users, $new_user);

@@ -145,16 +145,16 @@
            $email = "hhhh@hhh.com";
            $password = "1234";
            $id = null;
-           $test_user = new User($name, $id);
+           $test_user = new User($email, $id);
            $test_user->save();
            $new_email = "toocool@school.com";
            //Act
-           $test_store->update($new_email);
+           $test_user->update($new_email);
            //Assert
-           $this->assertEquals("toocool@school.com", $test_store->getEmail());
+           $this->assertEquals("toocool@school.com", $test_user->getEmail());
        }
 
-       
+
    }
 ?>
 
