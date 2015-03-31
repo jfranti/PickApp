@@ -174,6 +174,26 @@
             $GLOBALS['DB']->exec("DELETE FROM events WHERE id = {$this->getId()};");
         }
 
+        function addUser()
+        {
+            $GLOBALS['DB']->exec("INSERT INTO events_users (event_id, user_id) VALUES ({$event->getId()}), {$this->getId()};");
+        }
+
+        function getUsers()
+        {
+            $user_ids = $GLOBALS['DB']->query("SELECT users.* FROM events JOIN events_users ON (users.id = events_users.user_id) JOIN users ON (events_users.event_id = events.id ) WHERE events.id = {$this->getId()};");
+            $users = array();
+            foreach($user_ids as $user) {
+                $email = $user['email'];
+                $password = $user['password'];
+                $id = $user['id'];
+                $new_user = new User($email, $password, $id);
+                array_push($users, $new_user);
+            }
+            return $users;
+        }
+
+
     }
 
 ?>
