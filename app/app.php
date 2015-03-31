@@ -25,7 +25,7 @@
     });
 
     $app->get("/", function() use ($app) {
-        $current_time = timestamp;
+        $current_time = t;
         return $app['twig']->render('list.twig', array('events' => Event::getALl(), 'time' => $current_time));
     });
 
