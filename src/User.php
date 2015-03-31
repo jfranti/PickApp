@@ -82,7 +82,10 @@
         }
            return $found_user;
        }
-
+        function deleteUser()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM users WHERE id = {$this->getId()};");
+        }
     }
 
 
