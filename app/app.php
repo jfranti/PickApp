@@ -25,8 +25,7 @@
     });
 
     $app->get("/", function() use ($app) {
-        $current_time = timestamp;
-        return $app['twig']->render('index.twig', array('events' => Event::getAll(), 'time' => $current_time));
+        return $app['twig']->render('index.twig', array('events' => Event::getAll()));
     });
 
 
@@ -39,6 +38,7 @@
     $app->get("/users/{id}", function($id) use ($app) {
         $current_user = User::find($id);
         return $app['twig']->render('user.twig', array('user' => $current_user));
+    });
 
     $app->get("/users/{id}/edit", function($id) use ($app) {
         $current_user = User::find($id);
@@ -148,6 +148,7 @@
     $app->get("/categories/{id}", function($id) use ($app) {
         $current_category = Category::find($id);
         return $app['twig']->render('user.twig', array('user' => $current_category));
+    });
 
     $app->get("/categories/{id}/edit", function($id) use ($app) {
         $current_category = Category::find($id);

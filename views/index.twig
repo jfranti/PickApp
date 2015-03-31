@@ -11,10 +11,8 @@
         {% if events is not empty %}
         <ul>
             {% for event in events %}
-            {% if event.getEventTime is = time().timestamp <= - '60' %}
         <li>{{ time.getEvent }}<link href="/event/{id}">Click here to join</link></li>
        </ul>
-       {% endif %}
        {% endfor %}
         {% endif %}
         <form action='/events'>
