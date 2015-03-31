@@ -4,12 +4,16 @@
     * @backupStaticAttributes disabled
     */
     $DB = new PDO('pgsql:host=localhost;dbname=pickapp_test');
+
     require_once "src/Category.php";
+    require_once "src/Event.php";
+
     class CategoryTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
             Category::deleteAll();
+            Event::deleteAll();
         }
         function test_getName()
         {
@@ -113,19 +117,38 @@
         }
         function test_update()
         {
-            $name ='Hardcore';
+            $name = 'Hardcore';
             $description = 'Nothardcore';
             $id = 1;
             $test_category = new Category($name, $description, $id);
             $test_category->save();
             $new_name = 'Superhardcore';
-            $new_description = 'funstuff';
 
-            $test_category->update($new_name, $new_description);
+            $test_category->updateName($new_name);
 
-            $this->assertEquals(['Superhardcore', 'funstuff'], [$test_category->getName(), $test_category->getDescription()]);
+            $this->assertEquals(['Superhardcore'], [$test_category->getName()]);
         }
+        function test_addEvent()
+        {
+            $name = 'Hardcore';
+            $description = 'Nothardcore';
+            $id = 1;
+            $test_category = new Category($name, $description, $id);
+            $test_category->save();
 
+            $name = "Baseball Game";
+            $location = "Overlook Park";
+            $event_time = "2015-12-12 14:00:00";
+            $reqs = "Bring a glove.";
+            $description = "n/a";
+            $skill_level = "Beginner";
+            $test_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level);
+            $test_event->save();
 
+            $test_category->addEvent($test_event);
+            $result = $test_category->getEvents();
+
+            $this->assertEquals($test_event, $result[0]);
+        }
     }
 ?>

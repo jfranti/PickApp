@@ -98,7 +98,6 @@
             //Assert
             $this->assertEquals([], $result);
         }
-
         function test_find()
         {
             //Arrange
@@ -117,7 +116,6 @@
             //Assert
             $this->assertEquals($test_user, $result);
         }
-
         function test_deleteUser()
         {
             //Arrange
@@ -137,10 +135,8 @@
             //Assert
             $this->assertEquals([$test_user2], $result);
         }
-
-
         function test_update()
-       {
+        {
            //Arrange
            $email = "hhhh@hhh.com";
            $password = "1234";
@@ -153,15 +149,5 @@
            //Assert
            $this->assertEquals("toocool@school.com", $test_user->getEmail());
        }
-
-
    }
-?>
-
-
-
-
-
-    }
-
 ?>

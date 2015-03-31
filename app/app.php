@@ -59,9 +59,6 @@
         return $app['twig']->render('login.html.twig', array('events' => Event::getALl()));
     });
 
-    //EVENT PAGES
-
-
     return $app;
 
 ?>
