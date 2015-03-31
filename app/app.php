@@ -69,12 +69,12 @@
 
     $app->get("/events/{id}", function($id) use ($app) {
         $current_event = Event::find($id);
-        return $app['twig']->render('event.twig' array('event' => $current_event));
+        return $app['twig']->render('event.twig' array('event' => $current_event, 'players' => $event->getPlayers()));
     });
 
-    $app->get("/events/{id}", function($id) use ($app) {
+    $app->get("/events/{id}/host", function($id) use ($app) {
         $current_event = Event::find($id);
-        return $app['twig']->render('event_host.twig' array('event' => $current_event));
+        return $app['twig']->render('event_host.twig' array('event' => $current_event, 'players' => $event->getPlayers()));
     });
 
     $app->get("/events/{id}/edit", function($id) use ($app) {
@@ -132,17 +132,16 @@
 
     $app->get("/events/{id}/rsvp", function($id) use ($app) {
         $current_event = Event::find($id);
-        return $app['twig']->render('event.twig' array('event' => $current_event));
+        return $app['twig']->render('event_rsvp.twig' array('event' => $current_event));
     });
 
-
-
-
-
-
-
-
-
+    $app->post("/add_player", function() use ($app) {
+        $current_event = Event::find($_POST['event_id']);
+        $new_player = new Player($_POST['new_name']);
+        $new_player->save();
+        $current_event->addPlayer($new_player);
+        return $app['twig']->render('event.twig' array('event' => $current_event, 'players' => $event->getPlayers()));
+    });
 
     return $app;
 
