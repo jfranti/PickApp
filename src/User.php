@@ -45,20 +45,20 @@
 
         function save()
         {
-            $statement = $GLOBALS['DB']->exec("INSERT INTO user (email, password) VALUES ('$this->getEmail()', $this->getId());");
+            $statement = $GLOBALS['DB']->query("INSERT INTO users (email, password) VALUES ('{$this->getEmail()}', '{$this->getPassword()}') RETURNING id;");
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             $this->setId($result['id']);
         }
 
          static function getAll()
         {
-            $returned_users = $GLOBALS['DB']->query("SELECT * FROM user");
+            $returned_users = $GLOBALS['DB']->query("SELECT * FROM users");
 
             $users = array();
             foreach($returned_users as $user){
                 $email = $user['email'];
                 $password = $user['password'];
-                $id = $brand['id'];
+                $id = $user['id'];
                 $new_user = new User($email, $password, $id);
                 array_push($users, $new_user);
             }
@@ -67,7 +67,7 @@
 
         static function deleteAll()
         {
-            $GLOBALS['DB']->exec("DELETE FROM user *;")
+            $GLOBALS['DB']->exec("DELETE FROM users *;");
         }
     }
 

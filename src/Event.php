@@ -10,11 +10,11 @@
         private $description;
         private $skill_level;
 
-        function __construct($name, $location, $time, $reqs, $description, $skill_level, $id = null)
+        function __construct($name, $location, $event_time, $reqs, $description, $skill_level, $id = null)
         {
             $this->name = $name;
             $this->location = $location;
-            $this->time = $time;
+            $this->event_time = $event_time;
             $this->reqs = $reqs;
             $this->description = $description;
             $this->skill_level = $skill_level;

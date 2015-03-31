@@ -65,7 +65,6 @@
             $test_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level, $id);
             //Act
             $result = $test_event->getLocation();
-            var_dump($result);
             //Assert
             $this->assertEquals($location, $result);
 
@@ -84,7 +83,6 @@
             $test_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level, $id);
             //Act
             $result = $test_event->getEventTime();
-            var_dump($result);
             //Assert
             $this->assertEquals($event_time, $result);
 
@@ -103,7 +101,6 @@
             $test_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level, $id);
             //Act
             $result = $test_event->getDescription();
-            var_dump($result);
             //Assert
             $this->assertEquals($description, $result);
 
@@ -122,7 +119,6 @@
             $test_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level, $id);
             //Act
             $result = $test_event->getSkillLevel();
-            var_dump($result);
             //Assert
             $this->assertEquals($skill_level, $result);
 
