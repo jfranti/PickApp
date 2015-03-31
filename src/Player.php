@@ -56,6 +56,11 @@
             }
             return $players;
         }
+
+        static function deleteAll()
+        {
+          $GLOBALS['DB']->exec("DELETE FROM players *;");
+        }
     }
 
 ?>

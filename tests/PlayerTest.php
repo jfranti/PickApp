@@ -11,6 +11,10 @@
 
     class PlayerTest extends PHPUnit_Framework_TestCase
     {
+        protected function teardown()
+        {
+            Player::deleteAll();
+        }
 
         function test_setName()
         {
