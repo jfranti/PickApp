@@ -21,7 +21,6 @@
         }
 
 
-
         function test_getUser()
         {
             //Arrange
@@ -50,7 +49,6 @@
             $result = $test_user->getId();
             $this->assertEquals(1, $result);
         }
-
 
 
         function test_getId()
@@ -157,5 +155,7 @@
             //Assert
             $this->assertEquals([$test_user2], $result);
         }
+
+}
 
 ?>

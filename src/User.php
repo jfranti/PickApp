@@ -1,4 +1,4 @@
-<?php
+r<?php
     class User
     {
         private $email;
