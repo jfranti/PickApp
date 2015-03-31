@@ -21,12 +21,17 @@
     //HOME PAGES
 
     $app->get("/login", function() use ($app) {
-        return $app['twig']->render('login.twig', array('users' => User::getALl()));
+        return $app['twig']->render('login.twig', array('users' => User::getAll()));
     });
 
     $app->get("/", function() use ($app) {
-        $current_time = t;
-        return $app['twig']->render('list.twig', array('events' => Event::getALl(), 'time' => $current_time));
+        $current_time = timestamp;
+        return $app['twig']->render('index.twig', array('events' => Event::getAll(), 'time' => $current_time));
+    });
+
+
+    $app->get("/events", function() use ($app) {
+        return $app['twig']->render('events.twig', array('events' => Event::getALl()));
     });
 
     //USER PAGE
@@ -37,7 +42,7 @@
 
     $app->get("/users/{id}/edit", function($id) use ($app) {
         $current_user = User::find($id);
-        return $app['twig']->render('user.twig', array('user' => $current_user));
+        return $app['twig']->render('user_edit.twig', array('user' => $current_user));
     });
 
     $app->patch("/users/{id}/update_email", function ($id) use ($app) {
@@ -66,6 +71,76 @@
         $current_event = Event::find($id);
         return $app['twig']->render('event.twig' array('event' => $current_event));
     });
+
+    $app->get("/events/{id}", function($id) use ($app) {
+        $current_event = Event::find($id);
+        return $app['twig']->render('event_host.twig' array('event' => $current_event));
+    });
+
+    $app->get("/events/{id}/edit", function($id) use ($app) {
+        $current_event = Event::find($id);
+        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+    });
+
+    $app->delete("/events/{id}/delete", function($id) use ($app) {
+        $current_event = Event::find($id);
+        $current_event->delete();
+        return $app['twig']->render('events.twig', array('events' => Event::getALl(), 'time' => $current_time));
+    });
+
+    $app->patch("/events/{id}/update_name", function($id) use ($app) {
+        $current_event = Event::find($id);
+        $new_name = $_POST['new_name'];
+        $current_event->updateName($new_name);
+        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+    });
+
+    $app->patch("/events/{id}/update_location", function($id) use ($app) {
+        $current_event = Event::find($id);
+        $new_location = $_POST['new_location'];
+        $current_event->updateLocation($new_location);
+        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+    });
+
+    $app->patch("/events/{id}/update_event_time", function($id) use ($app) {
+        $current_event = Event::find($id);
+        $new_event_time = $_POST['new_event_time'];
+        $current_event->updateEventTime($new_event_time);
+        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+    });
+
+    $app->patch("/events/{id}/update_reqs", function($id) use ($app) {
+        $current_event = Event::find($id);
+        $new_reqs = $_POST['new_reqs'];
+        $current_event->updateReqs($new_reqs);
+        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+    });
+
+    $app->patch("/events/{id}/update_description", function($id) use ($app) {
+        $current_event = Event::find($id);
+        $new_description = $_POST['new_description'];
+        $current_event->updateDescription($new_description);
+        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+    });
+
+    $app->patch("/events/{id}/update_skill_level", function($id) use ($app) {
+        $current_event = Event::find($id);
+        $new_skill_level = $_POST['new_skill_level'];
+        $current_event->updateSkillLevel($new_skill_level);
+        return $app['twig']->render('event_edit.twig' array('event' => $current_event));
+    });
+
+    $app->get("/events/{id}/rsvp", function($id) use ($app) {
+        $current_event = Event::find($id);
+        return $app['twig']->render('event.twig' array('event' => $current_event));
+    });
+
+
+
+
+
+
+
 
 
 
