@@ -113,7 +113,7 @@
         }
         function test_update()
         {
-            $name ='Hardcore';
+            $name = 'Hardcore';
             $description = 'Nothardcore';
             $id = 1;
             $test_category = new Category($name, $description, $id);
@@ -124,6 +124,16 @@
             $test_category->update($new_name, $new_description);
 
             $this->assertEquals(['Superhardcore', 'funstuff'], [$test_category->getName(), $test_category->getDescription()]);
+        }
+        function test_addEvent()
+        {
+            $name = 'Hardcore';
+            $description = 'Nothardcore';
+            $id = 1;
+            $test_category = new Category($name, $description, $id);
+            $test_category->save();
+
+            $name = 'Whiffle Ball';
         }
 
 
