@@ -80,12 +80,12 @@
 
         function addEvent($event)
         {
-            $GLOBALS['DB']->exec("INSERT INTO users_events (user_id, event_id) VALUES ({$this->getId()}, {$event->getId()});");
+            $GLOBALS['DB']->exec("INSERT INTO events_users (event_id, user_id) VALUES ({$event->getId()}), {$this->getId()};");
         }
 
         function getEvents()
         {
-            $user_ids = $GLOBALS['DB']->query("SELECT events.* FROM users JOIN users_events ON (events.id = users_events.event_id) JOIN users ON (users_events.user_id = users.id ) WHERE events.id = {$this->getId()};");
+            $user_ids = $GLOBALS['DB']->query("SELECT events.* FROM users JOIN events_users ON (users.id = events_users.user_id) JOIN events ON (events_users.event_id = events.id ) WHERE users.id = {$this->getId()};");
             $users = array();
             foreach($user_ids as $user) {
                 $email = $user['email'];
@@ -96,7 +96,7 @@
             }
             return $users;
         }
-        
+
 
         static function deleteAll()
         {
