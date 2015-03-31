@@ -193,7 +193,6 @@
         //Assert
         $result = Event::getAll();
         $this->assertEquals([$test_event2], $result);
-
     }
 
 

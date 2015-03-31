@@ -78,7 +78,7 @@
             return $users;
         }
 
-        function addEvent($event)
+        function addEvent($event)//THIS IS OUR RSVP FUNCTION
         {
             $GLOBALS['DB']->exec("INSERT INTO events_users (event_id, user_id) VALUES ({$event->getId()}), {$this->getId()};");
         }
@@ -89,7 +89,7 @@
             $users = array();
             foreach($user_ids as $user) {
                 $email = $user['email'];
-                $password = $user['password']
+                $password = $user['password'];
                 $id = $user['id'];
                 $new_user = new User($email, $password, $id);
                 array_push($users, $new_user);
