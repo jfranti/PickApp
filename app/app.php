@@ -62,8 +62,6 @@
     //EVENT PAGES
 
 
-
-
     return $app;
 
 ?>
