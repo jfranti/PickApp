@@ -20,6 +20,7 @@
             User::deleteAll();
         }
 
+
         function test_getUser()
         {
             //Arrange
@@ -32,6 +33,23 @@
             //Assert
             $this->assertEquals($email, $result);
         }
+
+        function test_setId()
+        {
+            //Arrange
+            $email = "testemail2@gmail.com";
+            $id = 1;
+            $password = "testpassword";
+            $test_user = new User($email, $password, $id);
+
+            //Act
+            $test_user->setId(1);
+
+            //Assert
+            $result = $test_user->getId();
+            $this->assertEquals(1, $result);
+        }
+
 
         function test_getId()
         {
@@ -98,6 +116,7 @@
             //Assert
             $this->assertEquals([], $result);
         }
+
         function test_find()
         {
             //Arrange
@@ -116,6 +135,7 @@
             //Assert
             $this->assertEquals($test_user, $result);
         }
+
         function test_deleteUser()
         {
             //Arrange
@@ -135,19 +155,7 @@
             //Assert
             $this->assertEquals([$test_user2], $result);
         }
-        function test_update()
-        {
-           //Arrange
-           $email = "hhhh@hhh.com";
-           $password = "1234";
-           $id = null;
-           $test_user = new User($email, $id);
-           $test_user->save();
-           $new_email = "toocool@school.com";
-           //Act
-           $test_user->update($new_email);
-           //Assert
-           $this->assertEquals("toocool@school.com", $test_user->getEmail());
-       }
-   }
+
+}
+
 ?>

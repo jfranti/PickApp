@@ -1,4 +1,4 @@
-<?php
+r<?php
     class User
     {
         private $email;
@@ -50,19 +50,6 @@
             $this->setId($result['id']);
         }
 
-        function update($new_email)
-        {
-            $GLOBALS['DB']->exec("UPDATE users SET email = '{$new_email}' WHERE id = {$this->getId()};");
-            $this->setEmail($new_email);
-        }
-
-        function updatePassword($new_password)
-        {
-            $GLOBALS['DB']->exec("UPDATE users SET password = '{$new_epassword}' WHERE id = {$this->getId()};");
-            $this->setPassword($new_password);
-        }
-
-
          static function getAll()
         {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users");
@@ -78,30 +65,9 @@
             return $users;
         }
 
-        function addEvent($event)//THIS IS OUR RSVP FUNCTION
-        {
-            $GLOBALS['DB']->exec("INSERT INTO events_users (event_id, user_id) VALUES ({$event->getId()}), {$this->getId()};");
-        }
-
-        function getEvents()
-        {
-            $user_ids = $GLOBALS['DB']->query("SELECT events.* FROM users JOIN events_users ON (users.id = events_users.user_id) JOIN events ON (events_users.event_id = events.id ) WHERE users.id = {$this->getId()};");
-            $users = array();
-            foreach($user_ids as $user) {
-                $email = $user['email'];
-                $password = $user['password'];
-                $id = $user['id'];
-                $new_user = new User($email, $password, $id);
-                array_push($users, $new_user);
-            }
-            return $users;
-        }
-
-
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM users *;");
-
         }
 
         static function find($search_id)
@@ -119,8 +85,9 @@
         function deleteUser()
         {
             $GLOBALS['DB']->exec("DELETE FROM users WHERE id = {$this->getId()};");
-            $GLOBALS['DB']->exec("DELETE FROM events_users WHERE user_id = {$this->getId()};");
         }
     }
+
+
 
 ?>
