@@ -78,7 +78,7 @@
             return $users;
         }
 
-        function addEvent($event)
+        function addEvent($event)//THIS IS OUR RSVP FUNCTION
         {
             $GLOBALS['DB']->exec("INSERT INTO events_users (event_id, user_id) VALUES ({$event->getId()}), {$this->getId()};");
         }
