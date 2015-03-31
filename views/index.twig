@@ -1,8 +1,22 @@
 <html>
     <head>
+
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <link rel='stylesheet' href='../css/styles.css'>
         <title>PickApp</title>
     </head>
     <body>
+        <div class='container'>
         <h1><img src="pickapp logo"></img></h1>
-    </body>
+        {% if events is not empty %}
+        <ul>
+            {% for event in events %}
+        <li>{{ time.getEvent }}<link href="/event/{id}">Click here to join</link></li>
+       </ul>
+       {% endfor %}
+        {% endif %}
+        <form action='/events'>
+            <button type="submit">Create an Event</button>
+        </form>
+    </div>
 </html>
