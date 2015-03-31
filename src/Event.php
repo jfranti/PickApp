@@ -98,6 +98,42 @@
             $this->setId($result['id']);
         }
 
+        function updateName($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE events SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+        }
+
+        function updateLocation($new_location)
+        {
+            $GLOBALS['DB']->exec("UPDATE events SET location = '{$new_location}' WHERE id = {$this->getId()};");
+            $this->setLocation($new_location);
+        }
+
+        function updateEventTime($new_event_time)
+        {
+            $GLOBALS['DB']->exec("UPDATE events SET event_time = '{$new_event_time}' WHERE id = {$this->getId()};");
+            $this->setEventTime($new_event_time);
+        }
+
+        function updateReqs($new_reqs)
+        {
+            $GLOBALS['DB']->exec("UPDATE events SET reqs = '{$new_reqs}' WHERE id = {$this->getId()};");
+            $this->setReqs($new_reqs);
+        }
+
+        function updateDescription($new_description)
+        {
+            $GLOBALS['DB']->exec("UPDATE events SET description = '{$new_description}' WHERE id = {$this->getId()};");
+            $this->setDescription($new_description);
+        }
+
+        function updateSkillLevel($new_skill_level)
+        {
+            $GLOBALS['DB']->exec("UPDATE events SET skill_level = '{$new_skill_level}' WHERE id = {$this->getId()};");
+            $this->setSkillLevel($new_skill_level);
+        }
+
         static function getAll()
         {
             $all_events = $GLOBALS['DB']->query("SELECT * FROM events");
