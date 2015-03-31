@@ -70,16 +70,16 @@
             $GLOBALS['DB']->exec("DELETE FROM users *;");
         }
 
-            static function find($search_id)
-       {
-           $found_user = null;
-           $users = User::getAll();
-           foreach($users as $user) {
+        static function find($search_id)
+        {
+            $found_user = null;
+            $users = User::getAll();
+            foreach($users as $user) {
                $user_id = $user->getId();
                if ($user_id == $search_id) {
                    $found_user = $user;
                }
-           }
+        }
            return $found_user;
        }
 

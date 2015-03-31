@@ -121,6 +121,23 @@
             $GLOBALS['DB']->exec("DELETE FROM events *;");
         }
 
+        static function find($search_id)
+        {
+            $all_events = Event::getAll();
+            $found_events = null;
+            foreach($all_events as $event) {
+                if ($event->getId() == $search_id) {
+                    $found_brands = $brand;
+                }
+            }
+            return $found_brands;
+        }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM events WHERE id = {$this->getId()};");
+        }
+
     }
 
 ?>
