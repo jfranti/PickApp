@@ -195,6 +195,35 @@
         $this->assertEquals([$test_event2], $result);
     }
 
+    function test_getPlayers()
+        {
+            //Arrange
+            $name = "John";
+            $test_player = new Player($name);
+            $test_player->save();
+
+            $name2 = "Jimmy";
+            $test_player2 = new Player($name);
+            $test_player2->save();
+
+            $name = "Baseball Game";
+            $location = "Overlook Park";
+            $event_time = "2015-12-12 14:00:00";
+            $reqs = "Bring a glove.";
+            $description = "n/a";
+            $skill_level = "Beginner";
+            $test_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level);
+            $test_event->save();
+
+            //Act
+            $test_event->addPlayer($test_player);
+            $test_event->addPlayer($test_player2);
+
+            //Assert
+            $result = $test_event->getPlayers();
+            $this->assertEquals([$test_player, $test_player2], $result);
+        }
+
 
     }
 
