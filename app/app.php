@@ -174,7 +174,5 @@
         return $app['twig']->render('login.twig', array('events' => Event::getALl()));
     });
 
-
     return $app;
-
 ?>
