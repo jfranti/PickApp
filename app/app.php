@@ -98,6 +98,18 @@
 
     //EVENTS PAGE
 
+    $app->get("/create_event", function() use ($app) {
+        return $app['twig']->render('create_event.twig' array('user_id' => $_SESSION['user_id']))
+    })
+
+    $app->post("/add_event", function() use ($app) {
+        $name = $_POST['name'];
+        $event_time = $_POST['event_time'];
+        $location = $_POST['location'];
+        $reqs = $_POST['reqs']
+        //PAUSE
+    })
+
     $app->get("/events/{id}", function($id) use ($app) {
         $current_event = Event::find($id);
         return $app['twig']->render('event.twig', array('event' => $current_event, 'players' => $event->getPlayers(), 'user_id' => $_SESSION['user_id']));
