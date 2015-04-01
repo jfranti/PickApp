@@ -30,6 +30,33 @@
        </ul>
        {% endfor %}
         {% endif %}
+
+        <center>
+        <div class='header'><h1>PickApp<small> Join the Fun </small>
+            <br>
+
+            {% if events is not empty %}
+            <ul>
+                {% for event in events %}
+            <li>{{ event.getName }}{{ event.getEventTime }}<link href="/event/{id}">Click here to join</link></li>
+            <li>{{ event.getLocation }}</li>
+           </ul>
+           {% endfor %}
+            {% endif %}
+
+            <br>
+        <form action='/events'>
+            <button type"submit" class='btn btn-warning'>Events</button>
+        </form>
+        <form action='/create_login'>
+            <button type"submit" class='btn btn-success'>Create a Login</button>
+        </form>
+        <form action='/login'>
+            <button type"submit" class='btn btn-success'>Login</button>
+        </form>
+
+        </center>
+>>>>>>> 675b0f238d0a69a0967355ec79d061eba3f54102
     </body>
   </div>
 </html>
