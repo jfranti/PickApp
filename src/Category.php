@@ -3,7 +3,7 @@
     * @backupGlobals disabled
     * @backupStaticAttributes disabled
     */
-    $DB = new PDO('pgsql:host=localhost;dbname=pickapp_test');
+    
     class Category
     {
         private $name;
