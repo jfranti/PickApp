@@ -1,13 +1,11 @@
 <html>
     <head>
-
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
         <link rel='stylesheet' href='../css/styles.css'>
         <title>PickApp</title>
     </head>
     <body>
         <div class='container'>
-        <h1><img src="pickapp logo"></img></h1>
         {% if events is not empty %}
         <ul>
             {% for event in events %}
@@ -15,10 +13,20 @@
        </ul>
        {% endfor %}
         {% endif %}
-        <form action='/events'>
 
-          <table>
-            <button type="submit">Create an Event</button>
+        <center>
+        <div class='header'><h1>PickApp<small>Join the Fun</small>
+        <form action='/events'>
+            <button type"submit" class='btn btn-warning'>Events</button>
         </form>
-    </div>
+        <form action='/create_login'>
+            <button type"submit" class='btn btn-success'>Create a Login</button>
+        </form>
+        <form action='/login'>
+            <button type"submit" class='btn btn-success'>Login</button>
+        </form>
+
+        </center>
+    </body>
+  </div>
 </html>

@@ -24,6 +24,17 @@
         return $app['twig']->render('login.twig', array('users' => User::getAll()));
     });
 
+    $app->get("/create_login", function() use ($app) {
+        return $app['twig']->render('create_login.twig', array('users' => User::getAll()));
+    });
+
+    $app->post("/login/OK", function() use ($app) {
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $user = new User($email,$password);
+        return $app['twig']->render('login_ok.twig', array('users' => User::getAll()));
+    });
+
     $app->get("/", function() use ($app) {
         return $app['twig']->render('index.twig', array('games' => Event::findCurrentGames()));
     });

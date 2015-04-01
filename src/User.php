@@ -94,12 +94,34 @@
                    $found_user = $user;
                }
         }
-           return $found_user;
-       }
+           return  $found_user;
+        }
+
         function deleteUser()
         {
             $GLOBALS['DB']->exec("DELETE FROM users WHERE id = {$this->getId()};");
             $GLOBALS['DB']->exec("DELETE FROM events_users WHERE user_id = {$this->getId()};");
+        }
+
+        function authentication()
+        {
+            //Here is where we access the database.
+            $query = $GLOBALS['DB']->query("SELECT (email, password) FROM users WHERE '{$this->getEmail}' AND '{$this->getPassword}';");
+            $users = array();
+            foreach($query as $user) {
+                $email = $user['email'];
+                $password = $user['password'];
+              }
+              if($email == ['email'] && $password == ['password'])
+                return true;
+            else {
+              return false;
+            }
+        }
+
+        function startSession($user) {
+          session_start();
+          $_SESSION['user'] = $user;
         }
     }
 ?>
