@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="css/login.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <title>PickApp</title>
     </head>
     <body>
@@ -17,7 +18,12 @@
                         <label for='location'>Location</label>
                         <input id='location' name="location" type="text">
                         <label for='event_time'>Event Time</label>
-                        <input id='event_time' name="event_time" type="text">
+                        <input id='event_time' name="event_time" type="text" class="form-control" id='datetimepicker4' />
+                        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker4').datetimepicker();
+            });
+        </script>
                         <label for='reqs'>Requirements</label>
                         <input id='reqs' name="reqs" type="text">
                         <label for='description'>Event Description</label>
@@ -31,5 +37,6 @@
             </div>
         </div>
     </div>
+
     </body>
 </html>
