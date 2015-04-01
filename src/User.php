@@ -103,25 +103,47 @@
             $GLOBALS['DB']->exec("DELETE FROM events_users WHERE user_id = {$this->getId()};");
         }
 
-        function authentication()
+        static function authentication()
         {
             //Here is where we access the database.
-            $query = $GLOBALS['DB']->query("SELECT (email, password) FROM users WHERE '{$this->getEmail}' AND '{$this->getPassword}';");
+            $query = $GLOBALS['DB']->query("SELECT * FROM users WHERE (email, password) = ('{$this->getEmail()}',  '{$this->getPassword()}');");
             $users = array();
+            array_push($users, $query);
             foreach($query as $user) {
                 $email = $user['email'];
                 $password = $user['password'];
+                $new_user = new User($email, $password);
               }
-              if($email == ['email'] && $password == ['password'])
+              if($new_user->getEmail() == ['email'] && $new_user->getPassword() == ['password'])
                 return true;
-            else {
-              return false;
+              else {
+                return false;
             }
         }
-
-        function startSession($user) {
+        function startSession($user)
+        {
           session_start();
           $_SESSION['user'] = $user;
         }
+
+        // function authentication()
+        // {
+        //   $query = $GLOBALS['DB']->query("SELECT FROM users WHERE (email, password) = ('{$this->getEmail()}', '{$this->getPassword()}';");
+        //   $verified_users = $query->fetch(PDO::FETCH_ASSOC);
+        //   $final_confirm = array();
+        //   foreach($verified_users as $user) {
+        //     $email = $user['email'];
+        //     $password = $user['password'];
+        //     $new_user = new User($email, $password);
+        //     array_push($final_confirm, $new_user);
+        //       if(!empty($final_confirm)) {
+        //         return true;
+        //       }
+        //         else{
+        //           return false;
+        //         }
+        //     }
+        // }
+
     }
 ?>
