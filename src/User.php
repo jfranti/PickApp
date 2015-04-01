@@ -103,25 +103,25 @@
             $GLOBALS['DB']->exec("DELETE FROM events_users WHERE user_id = {$this->getId()};");
         }
 
-        function authentication()
+        static function authentication($email, $password)
         {
             //Here is where we access the database.
-            $query = $GLOBALS['DB']->query("SELECT (email, password) FROM users WHERE '{$this->getEmail}' AND '{$this->getPassword}';");
-            $users = array();
-            foreach($query as $user) {
-                $email = $user['email'];
-                $password = $user['password'];
-              }
-              if($email == ['email'] && $password == ['password'])
-                return true;
-            else {
-              return false;
+            $result = null;
+            $users = User::getAll();
+            foreach($users as $user) {
+                $user_email = $user->getEmail();
+                $user_password = $user->getPassword();
+              if($email == $user_email && $password == $user_password) {
+                  $result = $user;
             }
+            return $result;
         }
 
-        function startSession($user) {
+        function startSession($user)
+        {
           session_start();
           $_SESSION['user'] = $user;
         }
     }
+}
 ?>
