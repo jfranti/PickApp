@@ -106,7 +106,7 @@
     //EVENTS PAGE
 
     $app->get("/create_event", function() use ($app) {
-        return $app['twig']->render('create_event.twig' array('user_id' => $_SESSION['user_id']));
+        return $app['twig']->render('create_event.twig', array('user_id' => $_SESSION['user_id']));
     });
 
     $app->post("/add_event", function() use ($app) {
