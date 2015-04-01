@@ -12,6 +12,11 @@
     use Symfony\Component\HttpFoundation\Request;
         Request::enableHttpMethodParameterOverride();
 
+    session_start();
+   if (empty($_SESSION['user_id'])) {
+   $_SESSION['user_id'] = null;
+   };
+
     $DB = new PDO('pgsql:host=localhost;dbname=pickapp');
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
@@ -28,15 +33,15 @@
         return $app['twig']->render('create_login.twig', array('users' => User::getAll()));
     });
 
-    $app->post("/login/OK", function() use ($app) {
+    $app->post("/login", function() use ($app) {
         $email = $_POST["email"];
         $password = $_POST["password"];
-        $user = new User($email,$password);
+        $user = User::authentication($email, $password);
         return $app['twig']->render('login_ok.twig', array('users' => User::getAll()));
     });
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.twig', array('games' => Event::findCurrentGames()));
+        return $app['twig']->render('index.twig', array('events' => Event::findCurrentGames()));
     });
 
 
