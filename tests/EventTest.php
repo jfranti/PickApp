@@ -224,33 +224,34 @@
             $this->assertEquals([$test_player, $test_player2], $result);
         }
 
-        // function test_findCurrentGames()
-        // {
-        //     $name = "Baseball Game";
-        //     $location = "Overlook Park";
-        //     $event_time = "2015-03-31 19:10:00";
-        //     $reqs = "Bring a glove.";
-        //     $description = "n/a";
-        //     $skill_level = "Beginner";
-        //     $test_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level);
-        //     $test_event->save();
-        //
-        //     $name2 = "Soccer Game";
-        //     $location2 = "Irving Park";
-        //     $event_time2 = "2015-03-31 19:00:00";
-        //     $reqs2 = "Bring boots.";
-        //     $description2 = "3 on 3 soccer";
-        //     $skill_level2 = "Intermediate";
-        //     $test_event2 = new Event($name2, $location2, $event_time2, $reqs2, $description2, $skill_level2);
-        //     $test_event2->save();
-        //
-        //     //Act
-        //     $result = Event::findCurrentGames();
-        //     var_dump($result);
-        //
-        //     //Assert
-        //     $this->assertEquals([], $result);
-        // }
+        function test_findCurrentGames()
+        {
+            $name = "Baseball Game";
+            $location = "Overlook Park";
+            $event_time = "2015-04-01 10:30:00";
+            $reqs = "Bring a glove.";
+            $description = "n/a";
+            $skill_level = "Beginner";
+            $test_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level);
+            $test_event->save();
+
+            $name2 = "Soccer Game";
+            $location2 = "Irving Park";
+            $event_time2 = "2015-04-01 07:45:00";
+            $reqs2 = "Bring boots.";
+            $description2 = "3 on 3 soccer";
+            $skill_level2 = "Intermediate";
+            $test_event2 = new Event($name2, $location2, $event_time2, $reqs2, $description2, $skill_level2);
+            $test_event2->save();
+
+
+            //Act
+            $result = Event::findCurrentGames();
+            var_dump($result);
+
+            //Assert
+            $this->assertEquals([], $result);
+        }
 
     }
 
