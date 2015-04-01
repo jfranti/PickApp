@@ -7,11 +7,15 @@ CSS Settings For HTML Div ExactCenter
 
 
 }
+img {
+  border-radius: 50%;
+}
+
 
 #main {
 
-padding-left: 390px;
-padding-right: 400px;
+padding-left: 400px;
+padding-right: 800px;
 width:960px;
 margin:50px auto;
 font-family:raleway
@@ -65,4 +69,10 @@ font-size:20px;
 cursor:pointer;
 border-radius:5px;
 margin-bottom:15px
+}
+
+.btn {
+  background-color:#339999;
+  color:#000000;
+  display:inline;
 }

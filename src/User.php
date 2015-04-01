@@ -102,7 +102,6 @@
             $GLOBALS['DB']->exec("DELETE FROM users WHERE id = {$this->getId()};");
             $GLOBALS['DB']->exec("DELETE FROM events_users WHERE user_id = {$this->getId()};");
         }
-
         static function authentication($email, $password)
         {
             //Here is where we access the database.
@@ -116,12 +115,12 @@
             }
             return $result;
         }
-
         function startSession($user)
         {
           session_start();
           $_SESSION['user'] = $user;
         }
+
     }
 }
 ?>
