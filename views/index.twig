@@ -1,10 +1,27 @@
 <html>
     <head>
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
-        <link rel='stylesheet' href='../css/styles.css'>
+        <link rel="stylesheet" href='../css/bootstrap.css'>
+        <link rel='stylesheet' href='../css/login.css'>
         <title>PickApp</title>
     </head>
     <body>
+      <center>
+        <div class='header'><h1>PickApp<small>Join the Fun</small></h1>
+          <img src='/images/pickapplogo.jpg'></img>
+        <form action='/events'>
+            <button type"submit" class='btn btn-primary'>Events</button>
+        </form>
+        <form action='/login'>
+            <button type"submit" class='btn btn-primary'>Login</button>
+        </form>
+        <div class='black'>
+        <form action='/create_login'>
+            <button type"submit" class='btn btn-primary'>Create a Login</button>
+        </form>
+        </div>
+      </center>
+
+
         <div class='container'>
         {% if events is not empty %}
         <ul>
@@ -13,20 +30,6 @@
        </ul>
        {% endfor %}
         {% endif %}
-
-        <center>
-        <div class='header'><h1>PickApp<small>Join the Fun</small>
-        <form action='/events'>
-            <button type"submit" class='btn btn-warning'>Events</button>
-        </form>
-        <form action='/create_login'>
-            <button type"submit" class='btn btn-success'>Create a Login</button>
-        </form>
-        <form action='/login'>
-            <button type"submit" class='btn btn-success'>Login</button>
-        </form>
-
-        </center>
     </body>
   </div>
 </html>
