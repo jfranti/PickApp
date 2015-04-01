@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link href="css/login.css" rel="stylesheet" type="text/css">
+        <title>PickApp</title>
+    </head>
+    <body>
+        <h2>Create an Event</h2>
+        <div class="container-fluid">
+         <div id="main">
+             <div id="login">
+                 <center>
+                 <h2>PickApp Login</h2>
+                    <form action="/add_event" method="post">
+                        <label for='name'>Name</label>
+                        <input id='name' name="name" type="text">
+                        <label for='location'>Location</label>
+                        <input id='location' name="location" type="text">
+                        <label for='event_time'>Event Time</label>
+                        <input id='event_time' name="event_time" type="text">
+                        <label for='reqs'>Requirements</label>
+                        <input id='reqs' name="reqs" type="text">
+                        <label for='description'>Event Description</label>
+                        <input id='description' name="description" type="text">
+                        <label for='skill_level'>Skill Level</label>
+                        <input id='skill_level' name="skill_level" type="text">
+                        <button type='submit' class='btn btn-primary'>Login</button>
+                </form>
+            </center>
+            </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

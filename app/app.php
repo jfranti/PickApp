@@ -36,7 +36,7 @@
     });
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.twig', array('games' => Event::findCurrentGames()));
+        return $app['twig']->render('index.twig', array('events' => Event::findCurrentGames()));
     });
 
 
