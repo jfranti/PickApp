@@ -106,8 +106,8 @@
     //EVENTS PAGE
 
     $app->get("/create_event", function() use ($app) {
-        return $app['twig']->render('create_event.twig' array('user_id' => $_SESSION['user_id']))
-    })
+        return $app['twig']->render('create_event.twig', array('user_id' => $_SESSION['user_id']));
+    });
 
     $app->post("/add_event", function() use ($app) {
         $user_id = $_SESSION['user_id'];
@@ -120,7 +120,7 @@
         $new_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level);
         $new_event->save();
         $new_event->addUser($user_id);
-        return $app['twig']->render('events.twig', array('events' => Event::getAll(), 'user_id' => $_SESSION['user_id']))
+        return $app['twig']->render('events.twig', array('events' => Event::getAll(), 'user_id' => $_SESSION['user_id']));
     });
 
     $app->get("/events/{id}", function($id) use ($app) {
