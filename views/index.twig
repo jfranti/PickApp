@@ -20,6 +20,15 @@
         </form>
         </div>
       </center>
+
+        <div class='container'>
+        {% if events is not empty %}
+        <ul>
+            {% for event in events %}
+        <li>{{ time.getEvent }}<link href="/event/{id}">Click here to join</link></li>
+       </ul>
+       {% endfor %}
+        {% endif %}
     </body>
   </div>
 </html>
