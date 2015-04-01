@@ -174,9 +174,9 @@
             $GLOBALS['DB']->exec("DELETE FROM events WHERE id = {$this->getId()};");
         }
 
-        function addUser()
+        function addUser($user)
         {
-            $GLOBALS['DB']->exec("INSERT INTO events_users (event_id, user_id) VALUES ({$event->getId()}), {$this->getId()};");
+            $GLOBALS['DB']->exec("INSERT INTO events_users (event_id, user_id) VALUES ({$this->getId()}), {$user->getId()};");
         }
 
         function getUsers()
