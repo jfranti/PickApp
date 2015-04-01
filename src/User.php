@@ -102,23 +102,18 @@
             $GLOBALS['DB']->exec("DELETE FROM users WHERE id = {$this->getId()};");
             $GLOBALS['DB']->exec("DELETE FROM events_users WHERE user_id = {$this->getId()};");
         }
-
-        static function authentication()
+        static function authentication($email, $password)
         {
             //Here is where we access the database.
-            $query = $GLOBALS['DB']->query("SELECT * FROM users WHERE (email, password) = ('{$this->getEmail()}',  '{$this->getPassword()}');");
-            $users = array();
-            array_push($users, $query);
-            foreach($query as $user) {
-                $email = $user['email'];
-                $password = $user['password'];
-                $new_user = new User($email, $password);
-              }
-              if($new_user->getEmail() == ['email'] && $new_user->getPassword() == ['password'])
-                return true;
-              else {
-                return false;
+            $result = null;
+            $users = User::getAll();
+            foreach($users as $user) {
+                $user_email = $user->getEmail();
+                $user_password = $user->getPassword();
+              if($email == $user_email && $password == $user_password) {
+                  $result = $user;
             }
+            return $result;
         }
         function startSession($user)
         {
@@ -126,24 +121,6 @@
           $_SESSION['user'] = $user;
         }
 
-        // function authentication()
-        // {
-        //   $query = $GLOBALS['DB']->query("SELECT FROM users WHERE (email, password) = ('{$this->getEmail()}', '{$this->getPassword()}';");
-        //   $verified_users = $query->fetch(PDO::FETCH_ASSOC);
-        //   $final_confirm = array();
-        //   foreach($verified_users as $user) {
-        //     $email = $user['email'];
-        //     $password = $user['password'];
-        //     $new_user = new User($email, $password);
-        //     array_push($final_confirm, $new_user);
-        //       if(!empty($final_confirm)) {
-        //         return true;
-        //       }
-        //         else{
-        //           return false;
-        //         }
-        //     }
-        // }
-
     }
+}
 ?>
