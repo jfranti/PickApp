@@ -222,18 +222,18 @@
             return $players;
         }
 
-        static function findCurrentGames()
-        {
-            date_default_timezone_set('America/Los_Angeles');
-            $current_games = array();
-            $all_events = Event::getAll();
-            foreach ($all_events as $event) {
-                if (((strtotime($event->getEventTime())-3600) < (time()-25200)) && ((strtotime($event->getEventTime())+1800) > (time()-25200))) {
-                    $upcoming_event = $event;
-                    array_push($current_games, $upcoming_event);
-                }
-            }
-            return $current_games;
-        }
+        // static function findCurrentGames()
+        // {
+        //     date_default_timezone_set('America/Los_Angeles');
+        //     $current_games = array();
+        //     $all_events = Event::getAll();
+        //     foreach ($all_events as $event) {
+        //         if (((strtotime($event->getEventTime())-3600) < (time()-25200)) && ((strtotime($event->getEventTime())+1800) > (time()-25200))) {
+        //             $upcoming_event = $event;
+        //             array_push($current_games, $upcoming_event);
+        //         }
+        //     }
+        //     return $current_games;
+        // }
     }
 ?>
