@@ -54,7 +54,8 @@
 
     $app->post("/logout", function() use ($app) {
         $_SESSION['user_id'] = null;
-        return $app['twig']->render('index.twig', array('user_id' => $_SESSION['user_id']));
+        session_destroy();
+        return $app['twig']->render('index.twig', array('user_id' => $_SESSION['user_id'], 'events' => Event::getAll()));
     });
 
     $app->post("/login", function() use ($app) {
@@ -64,7 +65,7 @@
         if ($user != null) {
             $user_id = $user->getId();
             $_SESSION['user_id']=$user_id;
-            return $app['twig']->render('login_ok.twig', array('users' => User::getAll(), 'user_id' => $_SESSION['user_id']));
+            return $app['twig']->render('login_ok.twig', array('users' => User::getAll(), 'user' => $user, 'user_id' => $_SESSION['user_id']));
         }
         else {
             return $app['twig']->render('login.twig', array('users' => User::getAll()));
@@ -206,6 +207,10 @@
     });
 
     //CATEGORY PAGES
+
+    $app->get("/categories", function() use ($app) {
+      return $app['twig']->render('categories.twig');
+    });
 
     $app->get("/categories/{id}", function($id) use ($app) {
         $current_category = Category::find($id);

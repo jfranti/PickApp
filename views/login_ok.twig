@@ -9,7 +9,7 @@
     <p>
         User Profile
     </p>
-    {% if user_id in not empty %}
+    {% if user_id is not empty %}
       <p>You are signed in as {{ user.getEmail }}</p>
       {% endif %}
     <form action="/">
