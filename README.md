@@ -21,14 +21,8 @@ Allows users to check upcoming events in real-time. Locally created events.
 6. Type in "CREATE TABLE events_categories (id serial PRIMARY KEY, store_id int, brand_id int);" in your terminal.
 Type in "CREATE TABLE events_users (id serial PRIMARY KEY, email citext, password varchar);" in your terminal.
 6. Make sure you are accessing psql while in your project folder.
-
-###Preparing your environment
-1. After preparing your database make sure you have your index.php file located within your web folder in the project directory.
-2. Go ahead and install composer with its dependencies that are specified within your included composer.json file using the "composer install" command within your terminal.
-3. After that is installed within your project folder you are now ready to prepare access the app. Go to the web folder within your project directory and type in "php -S localhost:8000" in your terminal.
-4. Open your browser and type in "localhost:8000" in the URL bar.
-5. Use the app!
 7. JOIN THE FUN!
+
 
 ###Copyright (c) 2015 John Franti, Reid Baldwin, Brett Moore, Geoff Winner
 

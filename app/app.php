@@ -4,6 +4,7 @@
     require_once __DIR__."/../src/User.php";
     require_once __DIR__."/../src/Event.php";
     require_once __DIR__."/../src/Category.php";
+    require_once __DIR__."/../src/Player.php";
 
     $app = new Silex\Application();
 
@@ -16,6 +17,8 @@
    if (empty($_SESSION['user_id'])) {
    $_SESSION['user_id'] = null;
    };
+
+   date_default_timezone_set ('America/Los_Angeles');
 
     $DB = new PDO('pgsql:host=localhost;dbname=pickapp');
 
@@ -30,7 +33,7 @@
     });
 
     $app->get('/create_login', function() use ($app) {
-      return $app['twig']->render('create_login.twig');
+      return $app['twig']->render('create_login.twig', array('user_id' => $_SESSION['user_id']));
     });
 
     $app->post("/add_user", function() use ($app) {
@@ -49,6 +52,12 @@
         return $app['twig']->render('login.twig', array('users' => User::getAll(), 'user_id' => $_SESSION['user_id']));
     });
 
+    $app->post("/logout", function() use ($app) {
+        $_SESSION['user_id'] = null;
+        session_destroy();
+        return $app['twig']->render('index.twig', array('user_id' => $_SESSION['user_id'], 'events' => Event::getAll()));
+    });
+
     $app->post("/login", function() use ($app) {
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -56,7 +65,7 @@
         if ($user != null) {
             $user_id = $user->getId();
             $_SESSION['user_id']=$user_id;
-            return $app['twig']->render('login_ok.twig', array('users' => User::getAll(), 'user_id' => $_SESSION['user_id']));
+            return $app['twig']->render('login_ok.twig', array('users' => User::getAll(), 'user' => $user, 'user_id' => $_SESSION['user_id']));
         }
         else {
             return $app['twig']->render('login.twig', array('users' => User::getAll()));
@@ -106,11 +115,10 @@
     //EVENTS PAGE
 
     $app->get("/create_event", function() use ($app) {
-        return $app['twig']->render('create_event.twig', array('user_id' => $_SESSION['user_id']));
+        return $app['twig']->render('create_event.twig', array('user_id' => $_SESSION['user_id'] && $_SESSION['user_id'] != ''));
     });
 
     $app->post("/add_event", function() use ($app) {
-        $user_id = $_SESSION['user_id'];
         $name = $_POST['name'];
         $event_time = $_POST['event_time'];
         $location = $_POST['location'];
@@ -119,13 +127,14 @@
         $skill_level = $_POST['skill_level'];
         $new_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level);
         $new_event->save();
+        $user_id = $_SESSION['user_id'];
         $new_event->addUser($user_id);
         return $app['twig']->render('events.twig', array('events' => Event::getAll(), 'user_id' => $_SESSION['user_id']));
     });
 
     $app->get("/events/{id}", function($id) use ($app) {
         $current_event = Event::find($id);
-        return $app['twig']->render('event.twig', array('event' => $current_event, 'players' => $current_event->getPlayers(), 'user_id' => $_SESSION['user_id']));
+        return $app['twig']->render('event.twig', array('event' => $current_event, 'user_id' => $_SESSION['user_id'], 'players' => $current_event->getPlayers()));
     });
 
     $app->get("/events/{id}/host", function($id) use ($app) {
@@ -196,7 +205,7 @@
         $new_player = new Player($_POST['new_name']);
         $new_player->save();
         $current_event->addPlayer($new_player);
-        return $app['twig']->render('event.twig', array('event' => $current_event, 'players' => $event->getPlayers()));
+        return $app['twig']->render('event.twig', array('event' => $current_event, 'players' => $current_event->getPlayers()));
     });
 
     //CATEGORY PAGES

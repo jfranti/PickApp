@@ -8,7 +8,7 @@
   <center>
     <div class='container'>
     {% if user_id is not empty %}
-      <h3>You are signed in as <small>{{ users.getEmail }}</small></h3>
+      <h3>You are signed in as <small>{{ user.getEmail }}</small></h3>
       {% endif %}
     <form action="/">
         <button type="submit" class="btn btn-primary">Ongoing Events</button>
