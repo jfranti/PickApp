@@ -15,7 +15,7 @@ img {
 #main {
 text-align: center;
 width:960px;
-margin:50px auto;
+margin: auto;
 font-family:raleway
 }
 h1{
@@ -40,7 +40,7 @@ margin-bottom:30px
 #login {
 background-color:#000000;
 width:300px;
-float:left;
+margin: auto;
 color: #339999;
 border-radius:10px;
 font-family:raleway;
@@ -72,13 +72,18 @@ margin-bottom:15px
 }
 
 .btn {
+    margin: auto;
   background-color:#339999;
   color:#000000;
   display:inline;
 }
 
 .game {
-    border: 5px solid grey;
+    margin: auto;
+    border: 3px ;
+    border-radius: 15px;
+    width: 400px;
+    border-style: groove;
     width: '50%';
 }
 
