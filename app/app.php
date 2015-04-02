@@ -201,6 +201,10 @@
 
     //CATEGORY PAGES
 
+    $app->get("/categories", function() use ($app) {
+      return $app['twig']->render('categories.twig');
+    });
+
     $app->get("/categories/{id}", function($id) use ($app) {
         $current_category = Category::find($id);
         return $app['twig']->render('user.twig', array('user' => $current_category));
