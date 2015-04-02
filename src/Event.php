@@ -1,5 +1,8 @@
 <?php
 
+
+    date_default_timezone_set ('America/Los_Angeles');
+
     class Event
     {
         private $id;
@@ -61,6 +64,11 @@
         function getEventTime()
         {
             return $this->event_time;
+        }
+
+        function getEventTimeUTC()
+        {
+            return strtotime($this->event_time);
         }
 
         function setReqs($new_reqs)
@@ -138,7 +146,7 @@
 
         static function getAll()
         {
-            $all_events = $GLOBALS['DB']->query("SELECT * FROM events");
+            $all_events = $GLOBALS['DB']->query("SELECT * FROM events ORDER BY event_time;");
             $returned_events = array();
             foreach($all_events as $event) {
                 $name = $event['name'];
