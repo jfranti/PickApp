@@ -9,48 +9,25 @@
     <center>
       <div class='header'><h1>PickApp<small>Join the Fun</small>
       </div>
-      <div class="btn-group" data-toggle="buttons">
-    <label class="btn btn-primary">
-      <input type="checkbox" autocomplete="off" checked> Events
-    </label>
-    <label class="btn btn-primary">
-      <input type="checkbox" autocomplete="off"> Semi-Pro
-    </label>
-    <label class="btn btn-primary">
-      <input type="checkbox" autocomplete="off"> Go Pro
-    </label>
+      <div class="text-center">
+        <div class='container'>
+            {% if events is not empty %}
+                {% for event in events %}
+                    <ul>
+                        <div class="game">
+                            <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- <strong>{{ event.getEventTime|date('m-d-Y') }}  <span class="time">{{ event.getEventTime|date('h:i a') }} </span></strong><br><a href="/events/{{ event.getId }}">More Info</a> </p>
+                        </div>
+                   </ul>
+           {% endfor %}
+            {% endif %}
+
     </div>
-    <br>
+
     <form action='/'>
-    <button type='submit' class='btn btn-success'>Home</button>
+    <button type='submit' class='btn btn-primary'>Home</button>
     </form>
   </center>
   <center>
-    <div class="row" style='text-align:center'>
-      <div class="col-sm-3 col-md-4" style='text-align:center'>
-        <div class="thumbnail" style='text-align:center'>
-          <img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/black-ink-grunge-stamps-textures-icons-sports-hobbies/042444-black-ink-grunge-stamp-textures-icon-sports-hobbies-ball-soccer1.png" alt="...">
-          <div class="caption">
-            <h3>Soccer</h3>
-            <p>Soccer Games Located in your Area</p>
-            <p><a href="/events" class="btn btn-primary" role="button">View Games</a> <a href="/create_event" class="btn btn-default" role="button">Create a Game</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 col-md-4" align="center">
-        <div class="thumbnail">
-          <img src="http://www2.psd100.com/ppp/2013/11/2701/Basketball-1127233121.png" alt="...">
-          <div class="caption">
-            <h3>Basketball</h3>
-            <p>Basketball Games Located in your Area</p>
-            <p><a href="/events" class="btn btn-primary" role="button">View Games</a> <a href="/create_event" class="btn btn-default" role="button">Create a Game</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </center>
     <div class='footer'></div>
   </body>

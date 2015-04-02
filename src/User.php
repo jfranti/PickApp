@@ -112,9 +112,12 @@
                 $user_password = $user->getPassword();
               if($email == $user_email && $password == $user_password) {
                   $result = $user;
+                }
             }
             return $result;
         }
+
+
         function startSession($user)
         {
           session_start();
@@ -122,5 +125,4 @@
         }
 
     }
-}
 ?>

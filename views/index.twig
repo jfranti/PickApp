@@ -14,21 +14,32 @@
         <form action='/login'>
             <button type"submit" class='btn btn-primary'>Login</button>
         </form>
+        <form action='/categories'>
+            <button type"submit" class='btn btn-primary'>Categories</button>
+        </form>
         <div class='black'>
         <form action='/create_login'>
             <button type"submit" class='btn btn-primary'>Create a Login</button>
         </form>
+        <form action='/logout' method="post">
+            <button type"submit" class='btn btn-primary'>Logout</button>
+        </form>
+
         </div>
       </center>
-
+      <div class="text-center">
         <div class='container'>
         {% if events is not empty %}
-        <ul>
             {% for event in events %}
-        <li>{{ event.getEventTime }}<link href="/event/{id}">Click here to join</link></li>
-       </ul>
+                <ul>
+                    <div class="game">
+                        <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- <strong>{{ event.getEventTime|date('m-d-Y') }}  <span class="time">{{ event.getEventTime|date('h:i a') }} </span></strong><br><a href="/events/{{ event.getId }}">More Info</a> </p>
+                    </div>
+               </ul>
        {% endfor %}
         {% endif %}
+
+    </div>
     </body>
   </div>
 </html>

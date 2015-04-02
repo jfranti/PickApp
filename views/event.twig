@@ -2,10 +2,45 @@
   <head>
     <link rel="stylesheet" href='../css/bootstrap.css'>
     <link rel='stylesheet' href='../css/login.css'>
-    <title>All Pickups in your Area</title>
+    <title>{{ event.getName }}</title>
   </head>
   <body>
     <div class='header'></div>
+
+    <div class="container">
+        <div class="text-center">
+            <h2>Join a Game</h2>
+            <h3><strong>Event Title:  </strong>{{ event.getName }}</h3>
+            <br>
+            <p><strong>Meet at:</strong> {{ event.getLocation }}</p>
+            <p><strong>Time:</strong> {{ event.getEventTime }}</p>
+            <p><strong>Required:</strong> {{ event.getReqs }}</p>
+            <p><strong>Description:</strong> {{ event.getDescription }}</p>
+            <p><strong>Skill Level:</strong> {{ event.getSkillLevel }}</p>
+            {% if players is not empty %}
+        </div>
+
+            <p><strong>Current Players:</strong></p>
+            <ol>
+
+                {% for player in players %}
+                    <li>{{ player.getName }}</li>
+
+                {% endfor %}
+            </ol>
+            {% endif %}
+            <div class="text-center">
+
+            <form action="/add_player" method="post">
+                <input value="{{ event.getId }}" id="event_id" name="event_id" type="hidden">
+                <input id='new_name' name="new_name" type="text" size="24">
+                <button type="submit" class="btn btn-primary">RSVP to {{ event.getName }}</button>
+            </form>
+            <form action='/'>
+                <button type="submit" class="btn btn-primary">Home</button>
+            </form>
+        </div>
+    </div>
     <div class='footer'></div>
   </body>
 </html>

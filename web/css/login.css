@@ -76,3 +76,12 @@ margin-bottom:15px
   color:#000000;
   display:inline;
 }
+
+.game {
+    border: 5px solid grey;
+    width: '50%';
+}
+
+.time {
+    color: red;
+}
