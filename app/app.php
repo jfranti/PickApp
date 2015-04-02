@@ -17,6 +17,8 @@
    $_SESSION['user_id'] = null;
    };
 
+
+
     $DB = new PDO('pgsql:host=localhost;dbname=pickapp');
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
@@ -30,7 +32,7 @@
     });
 
     $app->get('/create_login', function() use ($app) {
-      return $app['twig']->render('create_login.twig');
+      return $app['twig']->render('create_login.twig', array('user_id' => $_SESSION['user_id']));
     });
 
     $app->post("/add_user", function() use ($app) {
@@ -47,6 +49,11 @@
         $new_user = new User($email, $password);
         $new_user->save();
         return $app['twig']->render('login.twig', array('users' => User::getAll(), 'user_id' => $_SESSION['user_id']));
+    });
+
+    $app->post("/logout", function() use ($app) {
+        $_SESSION['user_id'] = null;
+        return $app['twig']->render('index.twig', array('user_id' => $_SESSION['user_id']));
     });
 
     $app->post("/login", function() use ($app) {
@@ -106,7 +113,7 @@
     //EVENTS PAGE
 
     $app->get("/create_event", function() use ($app) {
-        return $app['twig']->render('create_event.twig', array('user_id' => $_SESSION['user_id']));
+        return $app['twig']->render('create_event.twig', array('user_id' => $_SESSION['user_id'] && $_SESSION['user_id'] != ''));
     });
 
     $app->post("/add_event", function() use ($app) {
