@@ -18,7 +18,7 @@
    $_SESSION['user_id'] = null;
    };
 
-
+   date_default_timezone_set ('America/Los_Angeles');
 
     $DB = new PDO('pgsql:host=localhost;dbname=pickapp');
 
@@ -127,6 +127,8 @@
         $skill_level = $_POST['skill_level'];
         $new_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level);
         $new_event->save();
+        $user_id = $_SESSION['user_id'];
+        $new_event->addUser($user_id);
         return $app['twig']->render('events.twig', array('events' => Event::getAll(), 'user_id' => $_SESSION['user_id']));
     });
 

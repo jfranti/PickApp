@@ -29,14 +29,17 @@
                 {% endfor %}
             </ol>
             {% endif %}
+            <div class="text-center">
+
             <form action="/add_player" method="post">
                 <input value="{{ event.getId }}" id="event_id" name="event_id" type="hidden">
                 <input id='new_name' name="new_name" type="text" size="24">
-                <button type="submit" class="btn btn-success">RSVP to {{ event.getName }}</button>
+                <button type="submit" class="btn btn-primary">RSVP to {{ event.getName }}</button>
             </form>
             <form action='/'>
-                <button type="submit" class="btn btn-warning">Home</button>
+                <button type="submit" class="btn btn-primary">Home</button>
             </form>
+        </div>
     </div>
     <div class='footer'></div>
   </body>

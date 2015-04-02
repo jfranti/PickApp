@@ -79,5 +79,9 @@ margin-bottom:15px
 
 .game {
     border: 5px solid grey;
-    width: 920px;
+    width: '50%';
+}
+
+.time {
+    color: red;
 }

@@ -9,6 +9,20 @@
     <center>
       <div class='header'><h1>PickApp<small>Join the Fun</small>
       </div>
+      <div class="text-center">
+        <div class='container'>
+            {% if events is not empty %}
+                {% for event in events %}
+                    <ul>
+                        <div class="game">
+                            <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- <strong>{{ event.getEventTime|date('m-d-Y') }}  <span class="time">{{ event.getEventTime|date('h:i a') }} </span></strong><br><a href="/events/{{ event.getId }}">More Info</a> </p>
+                        </div>
+                   </ul>
+           {% endfor %}
+            {% endif %}
+
+    </div>
+
     <form action='/'>
     <button type='submit' class='btn btn-primary'>Home</button>
     </form>
