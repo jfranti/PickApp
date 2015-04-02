@@ -1,19 +1,24 @@
 <html>
   <head>
-    <link rel="stylesheet" href='../css/bootstrap.css'>
-    <link rel='stylesheet' href='../css/login.css'>
+    <link rel="stylesheet" href='css/bootstrap.css'>
+    <link href="css/login.css" rel="stylesheet" type="text/css">
     <title>Login</title>
   </head>
   <body><center>
     <div class='header'><h1><small>Create a Profile</h1>
     </div>
+    <div class="main">
+        <div class ="login">
     <form action="/create_login" method="post">
       <label for='email'>Email</label>
       <input id='email' name="email" type="text">
       <label for='password'>Password</label>
       <input id='password' name="password" type="password">
       <button type='submit' class='btn btn-success'>Login</button>
-    </form><div class='header'></div>
+    </form>
+    </div>
+    </div>
+
     <div class='footer'></div>
   </body>
 </html>
