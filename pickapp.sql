@@ -338,6 +338,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 --
 
 COPY categories (id, name, description) FROM stdin;
+1	soccer	\N
+2	football	\N
+3	basketball	\N
+4	baseball	\N
+5	bikings	\N
+6	disc golf	\N
+7	dodge ball	\N
+8	other	\N
 \.
 
 
@@ -360,7 +368,7 @@ SELECT pg_catalog.setval('categories_events_id_seq', 1, false);
 -- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('categories_id_seq', 1, false);
+SELECT pg_catalog.setval('categories_id_seq', 8, true);
 
 
 --
@@ -368,6 +376,10 @@ SELECT pg_catalog.setval('categories_id_seq', 1, false);
 --
 
 COPY events (id, name, location, reqs, description, skill_level, event_time) FROM stdin;
+1						2015-05-08 11:56:00
+2	basketball	park	yes	fun	pro	2015-04-02 12:18:00
+3	basketball	park	yes	fun	pro	2015-04-02 12:18:00
+4	basketball	moda center	good shoes	come dunk on lillard	professional only	2015-04-04 14:30:00
 \.
 
 
@@ -375,7 +387,7 @@ COPY events (id, name, location, reqs, description, skill_level, event_time) FRO
 -- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('events_id_seq', 1, false);
+SELECT pg_catalog.setval('events_id_seq', 4, true);
 
 
 --
@@ -383,6 +395,17 @@ SELECT pg_catalog.setval('events_id_seq', 1, false);
 --
 
 COPY events_players (id, event_id, player_id) FROM stdin;
+1	2	1
+2	2	2
+3	2	3
+4	2	4
+5	2	5
+6	2	6
+7	4	7
+8	4	8
+9	4	9
+10	4	10
+11	4	11
 \.
 
 
@@ -390,7 +413,7 @@ COPY events_players (id, event_id, player_id) FROM stdin;
 -- Name: events_players_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('events_players_id_seq', 1, false);
+SELECT pg_catalog.setval('events_players_id_seq', 11, true);
 
 
 --
@@ -413,6 +436,17 @@ SELECT pg_catalog.setval('events_users_id_seq', 1, false);
 --
 
 COPY players (id, name) FROM stdin;
+1	brett
+2	geoff
+3	john
+4	reid
+5	reid
+6	john
+7	reid
+8	Dirk Nowitski
+9	Gary Payton
+10	Sean Kemp
+11	Detlef Shrempf
 \.
 
 
@@ -420,7 +454,7 @@ COPY players (id, name) FROM stdin;
 -- Name: players_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('players_id_seq', 1, false);
+SELECT pg_catalog.setval('players_id_seq', 11, true);
 
 
 --
@@ -428,6 +462,7 @@ SELECT pg_catalog.setval('players_id_seq', 1, false);
 --
 
 COPY users (id, email, password) FROM stdin;
+1	moorebrett0@gmail.com	1234
 \.
 
 
@@ -435,7 +470,7 @@ COPY users (id, email, password) FROM stdin;
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('users_id_seq', 1, false);
+SELECT pg_catalog.setval('users_id_seq', 1, true);
 
 
 --
