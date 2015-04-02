@@ -53,6 +53,8 @@
 
         function setEventTime($new_event_time)
         {
+            date_default_timezone_set('America/Los_Angeles');
+            $new_event_time = date('Y-m-d H:i');
             $this->event_time = $new_event_time;
         }
 
