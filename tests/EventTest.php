@@ -237,7 +237,7 @@
 
             $name2 = "Soccer Game";
             $location2 = "Irving Park";
-            $event_time2 = "2015-04-01 07:45:00";
+            $event_time2 = "2015-04-02 10:45:00";
             $reqs2 = "Bring boots.";
             $description2 = "3 on 3 soccer";
             $skill_level2 = "Intermediate";
@@ -250,7 +250,7 @@
             var_dump($result);
 
             //Assert
-            $this->assertEquals([], $result);
+            $this->assertEquals([$test_event2], $result);
         }
 
     }
