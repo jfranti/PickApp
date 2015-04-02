@@ -20,15 +20,19 @@
         </form>
         </div>
       </center>
-
+      <div class="text-center">
         <div class='container'>
         {% if events is not empty %}
-        <ul>
             {% for event in events %}
-        <li>{{ event.getEventTime }}<link href="/event/{id}">Click here to join</link></li>
-       </ul>
+                <ul>
+                    <div class="game">
+                        <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- {{ event.getEventTime|localizeddate('long', 'short')  }} <a href="/events/{{ event.getId }}">Click here to join</a></p>
+                    </div>
+               </ul>
        {% endfor %}
         {% endif %}
+
+    </div>
     </body>
   </div>
 </html>

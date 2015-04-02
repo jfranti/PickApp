@@ -4,6 +4,7 @@
     require_once __DIR__."/../src/User.php";
     require_once __DIR__."/../src/Event.php";
     require_once __DIR__."/../src/Category.php";
+    require_once __DIR__."/../src/Player.php";
 
     $app = new Silex\Application();
 
@@ -64,7 +65,7 @@
     });
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.twig', array('events' => Event::findCurrentGames()));
+        return $app['twig']->render('index.twig', array('events' => Event::getAll()));
     });
 
     $app->get("/events", function() use ($app) {
@@ -110,7 +111,6 @@
     });
 
     $app->post("/add_event", function() use ($app) {
-        $user_id = $_SESSION['user_id'];
         $name = $_POST['name'];
         $event_time = $_POST['event_time'];
         $location = $_POST['location'];
@@ -119,13 +119,12 @@
         $skill_level = $_POST['skill_level'];
         $new_event = new Event($name, $location, $event_time, $reqs, $description, $skill_level);
         $new_event->save();
-        $new_event->addUser($user_id);
         return $app['twig']->render('events.twig', array('events' => Event::getAll(), 'user_id' => $_SESSION['user_id']));
     });
 
     $app->get("/events/{id}", function($id) use ($app) {
         $current_event = Event::find($id);
-        return $app['twig']->render('event.twig', array('event' => $current_event, 'players' => $event->getPlayers(), 'user_id' => $_SESSION['user_id']));
+        return $app['twig']->render('event.twig', array('event' => $current_event, 'user_id' => $_SESSION['user_id'], 'players' => $current_event->getPlayers()));
     });
 
     $app->get("/events/{id}/host", function($id) use ($app) {
@@ -196,7 +195,7 @@
         $new_player = new Player($_POST['new_name']);
         $new_player->save();
         $current_event->addPlayer($new_player);
-        return $app['twig']->render('event.twig', array('event' => $current_event, 'players' => $event->getPlayers()));
+        return $app['twig']->render('event.twig', array('event' => $current_event, 'players' => $current_event->getPlayers()));
     });
 
     //CATEGORY PAGES

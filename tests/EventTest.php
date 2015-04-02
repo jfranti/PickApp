@@ -250,7 +250,7 @@
             var_dump($result);
 
             //Assert
-            $this->assertEquals([$test_event2], $result);
+            $this->assertEquals([], $result);
         }
 
     }
