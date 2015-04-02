@@ -5,6 +5,14 @@
     <title>{{ category.getName}}</title>
   </head>
   <body>
+      {{ category.getName }}
+      {% if events is not empty %}
+        <ul>
+            {% for event in events %}
+            <p>{{ event.getName }}</p>
+            {% endfor %}
+        </ul>
+        {% endif %}
     <div class='header'></div>
     <div class='footer'></div>
   </body>

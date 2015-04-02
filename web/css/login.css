@@ -16,7 +16,7 @@ img {
 text-align: center;
 width:960px;
 margin: auto;
-font-family:raleway
+font-family:Verdana;
 }
 h1{
 
@@ -43,7 +43,7 @@ width:300px;
 margin: auto;
 color: #339999;
 border-radius:10px;
-font-family:raleway;
+font-family:Verdana;
 border:2px solid #ccc;
 padding:10px 40px 25px;
 margin-top:70px
@@ -57,7 +57,7 @@ border:1px solid #ccc;
 padding-left:5px;
 font-size:16px;
 
-font-family:raleway
+font-family:Verdana;
 }
 input[type=submit] {
 width:100%;
