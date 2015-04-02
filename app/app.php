@@ -64,7 +64,7 @@
     });
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.twig', array('events' => Event::findCurrentGames()));
+        return $app['twig']->render('index.twig', array('events' => Event::getAll()));
     });
 
     $app->get("/events", function() use ($app) {
@@ -125,7 +125,7 @@
 
     $app->get("/events/{id}", function($id) use ($app) {
         $current_event = Event::find($id);
-        return $app['twig']->render('event.twig', array('event' => $current_event, 'players' => $event->getPlayers(), 'user_id' => $_SESSION['user_id']));
+        return $app['twig']->render('event.twig', array('event' => $current_event, 'players' => $current_event->getPlayers(), 'user_id' => $_SESSION['user_id']));
     });
 
     $app->get("/events/{id}/host", function($id) use ($app) {
