@@ -9,8 +9,8 @@
     <p>
         User Profile
     </p>
-    {% if user_id in not empty %}
-      <p>You are signed in as {{ user.getEmail }}</p>
+    {% if user_id is not empty %}
+      <p>You are signed in as {{ users.getEmail }}</p>
       {% endif %}
     <form action="/">
         <button type="submit" class="btn btn-success">Ongoing Events</button>

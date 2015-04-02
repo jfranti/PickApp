@@ -13,9 +13,7 @@ img {
 
 
 #main {
-
-padding-left: 400px;
-padding-right: 800px;
+text-align: center;
 width:960px;
 margin:50px auto;
 font-family:raleway
@@ -26,9 +24,11 @@ h1{
 h2 {
 background-color:#000000;
 text-align:center;
+position: center;
 border-radius:10px 10px 0 0;
 margin:-10px -40px;
 padding:15px
+
 }
 hr {
 background-color:#FEFFED;
