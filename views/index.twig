@@ -33,7 +33,7 @@
             {% for event in events %}
                 <ul>
                     <div class="game">
-                        <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- {{ event.getEventTime }} <a href="/events/{{ event.getId }}">Click here to join</a></p>
+                        <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- <strong>{{ event.getEventTime|date('m-d-Y') }}  <span class="time">{{ event.getEventTime|date('h:i a') }} </span></strong><br><a href="/events/{{ event.getId }}">More Info</a> </p>
                     </div>
                </ul>
        {% endfor %}
