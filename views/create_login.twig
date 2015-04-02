@@ -5,19 +5,30 @@
     <title>Login</title>
   </head>
   <body><center>
-    <div class='header'><h1><small>Create a Profile</h1>
+        <div class="container-fluid">
+         <div id="main">
+
+            <div class="col-md-12">
+             <div id="login">
+
+                 <h2>Create Login</h2>
+
+                    <form action="/login" method="post">
+                        <label for='email'>Email</label>
+                        <input id='email' name="email" type="text">
+                        <label for='password'>Password</label>
+                        <input id='password' name="password" type="password">
+                        <button type='submit' class='btn btn-primary'>Login</button>
+                    </form>
+
+            </div>
+            </div>
+        </div>
     </div>
-    <div class="main">
-        <div class ="login">
-    <form action="/create_login" method="post">
-      <label for='email'>Email</label>
-      <input id='email' name="email" type="text">
-      <label for='password'>Password</label>
-      <input id='password' name="password" type="password">
-      <button type='submit' class='btn btn-success'>Login</button>
-    </form>
-    </div>
-    </div>
-    <div class='footer'></div>
+          <form action='/'>
+            <button type='submit' class='btn btn-primary'>
+              Home
+            </button>
+          </center>
   </body>
 </html>
