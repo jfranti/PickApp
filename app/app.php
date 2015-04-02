@@ -216,7 +216,7 @@
 
     $app->get("/categories/{id}", function($id) use ($app) {
         $current_category = Category::find($id);
-        return $app['twig']->render('user.twig', array('user' => $current_category));
+        return $app['twig']->render('category.twig', array('categories' => $current_category, 'events' => $current_category->getEvents()));
     });
 
     $app->get("/categories/{id}/edit", function($id) use ($app) {

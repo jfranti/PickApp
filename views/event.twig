@@ -19,10 +19,8 @@
             <p><strong>Skill Level:</strong> {{ event.getSkillLevel }}</p>
             {% if players is not empty %}
         </div>
-
             <p><strong>Current Players:</strong></p>
             <ol>
-
                 {% for player in players %}
                     <li>{{ player.getName }}</li>
 
