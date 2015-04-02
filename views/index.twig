@@ -7,7 +7,7 @@
     <body>
       <center>
         <div class='header'><h1>PickApp<small>Join the Fun</small></h1>
-          <img src='/images/pickapplogo.jpg'></img>
+          <img src='/images/pickapplogo.jpg' width="200px" height="200px"></img>
         <form action='/events'>
             <button type"submit" class='btn btn-primary'>Events</button>
         </form>
@@ -25,7 +25,7 @@
         {% if events is not empty %}
         <ul>
             {% for event in events %}
-        <li>{{ time.getEvent }}<link href="/event/{id}">Click here to join</link></li>
+        <li>{{ event.getEventTime }}<link href="/event/{id}">Click here to join</link></li>
        </ul>
        {% endfor %}
         {% endif %}

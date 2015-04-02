@@ -216,6 +216,7 @@
 
         static function findCurrentGames()
         {
+            date_default_timezone_set('America/Los_Angeles');
             $current_games = array();
             $all_events = Event::getAll();
             foreach ($all_events as $event) {
