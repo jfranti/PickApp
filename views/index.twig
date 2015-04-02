@@ -30,13 +30,16 @@
       <div class="text-center">
         <div class='container'>
         {% if events is not empty %}
-            {% for event in events %}
+            <h4>Upcoming Events:</h4>
+                {% for event in events %}
                 <ul>
-                    <div class="game">
-                        <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- <strong>{{ event.getEventTime|date('m-d-Y') }}  <span class="time">{{ event.getEventTime|date('h:i a') }} </span></strong><br><a href="/events/{{ event.getId }}">More Info</a> </p>
-                    </div>
+                    {% if event.getEventTime-"now" > 0 %}
+                        <div class="game">
+                            <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- <strong>{{ event.getEventTime|date('m-d-Y') }}  <span class="time">{{ event.getEventTime|date('h:i a') }} </span></strong><br><form action="/events/{{ event.getId }}"><button type="submit" class="btn btn-primary btn-xs">More Info</button></form></p>
+                        </div>
+                   {% endif %}
                </ul>
-       {% endfor %}
+           {% endfor %}
         {% endif %}
 
     </div>
