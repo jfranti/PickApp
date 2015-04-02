@@ -26,7 +26,7 @@
             {% for event in events %}
                 <ul>
                     <div class="game">
-                        <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- {{ event.getEventTime|localizeddate('long', 'short')  }} <a href="/events/{{ event.getId }}">Click here to join</a></p>
+                        <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- {{ event.getEventTime }} <a href="/events/{{ event.getId }}">Click here to join</a></p>
                     </div>
                </ul>
        {% endfor %}
