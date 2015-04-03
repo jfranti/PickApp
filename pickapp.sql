@@ -376,10 +376,6 @@ SELECT pg_catalog.setval('categories_id_seq', 8, true);
 --
 
 COPY events (id, name, location, reqs, description, skill_level, event_time) FROM stdin;
-1						2015-05-08 11:56:00
-2	basketball	park	yes	fun	pro	2015-04-02 12:18:00
-3	basketball	park	yes	fun	pro	2015-04-02 12:18:00
-4	basketball	moda center	good shoes	come dunk on lillard	professional only	2015-04-04 14:30:00
 \.
 
 
@@ -436,17 +432,6 @@ SELECT pg_catalog.setval('events_users_id_seq', 1, false);
 --
 
 COPY players (id, name) FROM stdin;
-1	brett
-2	geoff
-3	john
-4	reid
-5	reid
-6	john
-7	reid
-8	Dirk Nowitski
-9	Gary Payton
-10	Sean Kemp
-11	Detlef Shrempf
 \.
 
 
@@ -462,7 +447,6 @@ SELECT pg_catalog.setval('players_id_seq', 11, true);
 --
 
 COPY users (id, email, password) FROM stdin;
-1	moorebrett0@gmail.com	1234
 \.
 
 
