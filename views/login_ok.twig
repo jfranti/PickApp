@@ -1,23 +1,24 @@
 <html>
   <head>
     <link rel="stylesheet" href='../css/bootstrap.css'>
-    <link rel='stylesheet' href='../css/login.php'>
+    <link rel='stylesheet' href='../css/login.css'>
     <title>User Profile</title>
   </head>
   <body>
-    <div class='container'><br>
-    <p>
-        User Profile
-    </p>
+  <center>
+    <div class='container'>
     {% if user_id is not empty %}
-
-      <p>You are signed in as {{ user.getEmail }}</p>
-
+      <h3>You are signed in as <small>{{ user.getEmail }}</small></h3>
       {% endif %}
     <form action="/">
-        <button type="submit" class="btn btn-success">Ongoing Events</button>
+        <button type="submit" class="btn btn-primary">Ongoing Events</button>
     </form>
+    <br>
+    <h3>Not you?</h3>
+    <form action='/logout' method='post'>
+        <button type='submit' class='btn btn-primary'>Logout</button>
     </div>
     <div class='footer'></div>
+  </center>
   </body>
 </html>
