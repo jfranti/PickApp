@@ -73,7 +73,7 @@
     });
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.twig', array('events' => Event::getAll()));
+        return $app['twig']->render('index.twig', array('events' => Event::getAll(), 'user_id' => $_SESSION['user_id']));
     });
 
     $app->get("/events", function() use ($app) {
@@ -211,7 +211,7 @@
     //CATEGORY PAGES
 
     $app->get("/categories", function() use ($app) {
-      return $app['twig']->render('categories.twig');
+      return $app['twig']->render('categories.twig', array('user_id' => $_SESSION['user_id']));
     });
 
     $app->get("/categories/{id}", function($id) use ($app) {

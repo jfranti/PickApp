@@ -22,9 +22,15 @@
             <button type"submit" class='btn btn-primary'>Register</button>
         </form>
         <br>
+        {% if user_id != 0 %}
         <form action='/logout' method="post">
             <button type"submit" class='btn btn-primary'>Logout</button>
         </form>
+        {% else %}
+            <p>
+                <div class="time">You are Not Logged In</div>
+            </p>
+        {% endif %}
 
         </div>
       </center>
