@@ -17,7 +17,7 @@
                     <ul>
                         {% if date(event.getEventTime) > date("now") %}
                             <div class="game">
-                                <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- <strong>{{ event.getEventTime|date('m-d-Y') }}  <span class="time">{{ event.getEventTime|date('h:i a') }} </span></strong><br><form action="/events/{{ event.getId }}"><button type="submit" class="btn btn-primary btn-xs">More Info</button></form></p>
+                                <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- <strong>{{ event.getEventTime|date('m-d-Y') }}  </strong></p><p>Start Time  :<strong> <span class="time">{{ event.getEventTime|date('h:i a') }} </span></strong><br><form action="/events/{{ event.getId }}"><button type="submit" class="btn btn-primary btn-xs">More Info</button></form></p>
                             </div>
                        {% endif %}
                    </ul>

@@ -9,18 +9,19 @@
         <div class='header'><h1>PickApp<small>Join the Fun</small></h1>
           <img src='/images/pickapplogo.jpg' width="200px" height="200px"></img>
         <form action='/events'>
-            <button type"submit" class='btn btn-primary'>Events</button>
+            <button type"submit" class='btn btn-primary'>View All Events</button>
+        </form>
+        <form action='/categories'>
+            <button type"submit" class='btn btn-primary'>Categories and Create Events</button>
         </form>
         <form action='/login'>
             <button type"submit" class='btn btn-primary'>Login</button>
         </form>
-        <form action='/categories'>
-            <button type"submit" class='btn btn-primary'>Categories</button>
-        </form>
         <div class='black'>
         <form action='/create_login'>
-            <button type"submit" class='btn btn-primary'>Create a Login</button>
+            <button type"submit" class='btn btn-primary'>Register</button>
         </form>
+        <br>
         <form action='/logout' method="post">
             <button type"submit" class='btn btn-primary'>Logout</button>
         </form>
@@ -35,7 +36,7 @@
                 <ul>
                     {% if date(event.getEventTime) > date("now"|date_modify("-15 minutes")) and date(event.getEventTime) < date("now"|date_modify("+90 minutes"))  %}
                         <div class="game">
-                            <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- <strong>{{ event.getEventTime|date('m-d-Y') }}  <span class="time">{{ event.getEventTime|date('h:i a') }} </span></strong><br><form action="/events/{{ event.getId }}"><button type="submit" class="btn btn-primary btn-xs">More Info</button></form></p>
+                            <p><strong>{{ event.getName }}</strong> -- {{ event.getLocation }} -- <strong>{{ event.getEventTime|date('m-d-Y') }}  </strong></p><p>Start Time  :<strong> <span class="time">{{ event.getEventTime|date('h:i a') }} </span></strong><br><form action="/events/{{ event.getId }}"><button type="submit" class="btn btn-primary btn-xs">More Info</button></form></p>
                         </div>
                    {% endif %}
                </ul>
